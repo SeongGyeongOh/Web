@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS 프로토타입</title>
+        <meta charset="utf-8">
+
+        <script>
+            // 프로토타입 : static과 비슷한 것
+            // 리터럴 객체나 생성자함수나 만들어진 모든 객체는 전부 메소드를 객체마다 보유하고 있다
+            // 이를 해결하기 위해 메소드를 다른 곳에 적어놓고, 그것을 참조할 수 있는 코드를 적는 것 : 프로토타입
+            //  -(자바와는 다름 - 자바에서 메모리 구조는 함수를 따로 저장함(method 영역))
+            function Person(name, age){
+                this.name=name;
+                this.age=age;
+            }
+
+            // 함수가 있는 곳을 참조하라는 것
+            Person.prototype.show=function(){
+                // Person 밖에 있지만 마치 Person 안에 있는 것처럼.....
+                // Person 자료형에 하나만 있는 메소드임
+                document.write(this.name+", "+this.age+'<br>');
+            }
+
+            var p=new Person("sam", 30);
+            p.show();
+
+            var p2=new Person("robin", 25);
+            p2.show();
+
+            // prototype 메소드는 여러개가 가능하다
+            Person.prototype.getName=function(){
+                return this.name;
+            }
+
+            document.write(p.getName()+"<br>");
+            document.write(p2.getName()+"<br>");
+            
+            // 프로토타입은 변수도 ㄱㄴㄱㄴ
+            // -> 마치 자바의 static!! 같은 역할(클래스에 하나밖에 없는 클래스함수)
+            Person.prototype.major="중어중문";
+            document.write(p.major+"<br>");
+            document.write(p2.major+"<br>");
+            
+            // 값을 변경할 때 주의할 점!!!
+            // p.major="안드로이드"; //프로토타입 변수의 값 대입은 명시적으로 prototype을 써야 하며, 쓰지 않는다면 새로운 인스턴스변수(객체마다 가지고 있는 변수)가 p에 추가된 것!
+            document.write(p.major+"<br>"); //출력값 안드로이드
+            document.write(p2.major+"<br>"); //출력값 중어중문
+
+            // 결국, 프로토타입 변수의 값을 바꾸고 싶다면..
+            Person.prototype.major='WebApp';
+            document.write(p.major+"<br>"); //출력값 WebApp
+            document.write(p2.major+"<br>"); //출력값 WebApp
+
+        </script>
+    </head>
+
+    <body></body>
+</html>

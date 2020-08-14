@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DATE</title>
+        
+        <script>
+            //유용한 내장생성자함수 객체들을 알아보자
+            // - Date, Number, String, Math, Array
+            
+            // 1. Date
+            var date=new Date();
+            document.write(date);
+            document.write('<br>');
+            document.write(typeof(date));
+            document.write('<br>');
+
+            // 객체가 가지고 있는 주요 기능들(주요 메소드들)
+            document.write(date.toDateString()+'<br>'); //날짜만 출력
+            document.write(date.toLocaleString()+'<br>'); //한국식 출력
+            document.write(date.getFullYear()+'<br>'); //2020
+            document.write(date.getYear()+'<br>'); //1900년부터 숫자를 센 것 - 2020년 ->120
+            document.write(date.getMonth()+1+'<br>'); //month가 7월로 나오는 이유 - 0~11로 나옴 
+            document.write(date.getDate()+'<br>'); 
+            document.write(date.getHours()+'<br>'); 
+            document.write(date.getMinutes()+'<br>'); 
+            document.write(date.getSeconds()+'<br>'); 
+            document.write(date.getTime()+'<br>'); //currentTimeMillis(): 1970년 1월 1일 9:00부터(자바는 0:00) millisecond로 카운트 한 것
+
+            // set도 가능함
+            var d=new Date();
+            document.write(d.toLocaleString()+'<br>');
+            d.setFullYear(2022);
+            document.write(d.toLocaleString()+'<br>');
+            d.setMonth(9); //8월로 세팅됨
+            document.write(d.toLocaleString()+'<br>');
+
+            //생성자함수의 파라미터로 set도 가능
+            var date2=new Date(2025, 7, 29); //2025년 8월 29일로 세팅됨
+            document.write(date2.toLocaleString()+'<br>');
+
+            var d3=new Date("Wed Sep 13 2020"); 
+            document.write(d3.toLocaleString()+'<br>');
+
+            var d4=new Date("Wed Sep 13 2020 13:11:33 GMT+0900"); 
+            document.write(d4.toLocaleString()+'<br>');
+
+            var d5=new Date("2020. 9. 13. 11:14:13");
+            document.write(d5.toLocaleString()+'<br>');
+
+            var d6=new Date(0);
+            document.write(d6.toLocaleString()+'<br>');
+
+            // millisecond를 알면 두 날짜 사이의 비교가 가능가능
+            var a=new Date("2020. 3. 20");
+            var b=new Date(); //현재 날짜
+
+            var diff=b.getTime()-a.getTime(); // ==var diff=b-a; <-자동으로 millisecond를 뺌
+            document.write("두 날짜 사이의 간격이 밀리세컨드로: "+diff+'<br>');
+            // 밀리세컨드를 세컨드로
+            // var sec=diff/1000;
+            // var min=sec/60;
+            // var hour=min/60;
+            // var day=hour/24;
+            var day=diff/(1000*60*60*24);
+
+            document.write("두 날짜 사이의 날짜 차이는?"+day+'<br>');
+            // 소숫점 없애기
+            day=Math.floor(day); //버림 (round - 반올림)
+            document.write("두 날짜 사이의 날짜 차이는?"+day+'<br>');
+
+
+            // 입력받은 날짜로부터의 거리 
+            function clickBtn(){
+                // 현재날짜
+                var date=new Date();
+                // 날짜 얻어오기
+                var inDate=document.getElementById('ss');
+                var b=new Date(inDate.value);  //inDate.value(); //날짜가 문자열로 나옴
+
+                var diff=date-b;
+                var day=diff/(1000*60*60*24);
+                day=Math.floor(day);
+
+                if(day>0) alert('오늘로부터 '+day+'일 전입니다');
+                if(day<0) alert('오늘로부터 '+day+'일 후입니다');
+                else alert('오늘입니다');
+            }
+            
+
+
+        </script>
+
+        <script>
+            // 전자시계
+
+            function showClock(){
+                var a=new Date();
+                var e=document.getElementById("kk");
+                e.value=a.toLocaleString();
+
+                // 일정시간마다 새롭게 시간이 나오도록
+                setTimeout('showClock()', 1000); //1초 후 showClock()함수를 실행해라(마치 안드로이드 delay같은 녀석)
+            }
+        </script>
+
+
+    </head>
+
+    <body>
+        <hr>
+        <input type="date" id="ss">
+        <button onclick="clickBtn()">기준일 입력</button>
+
+        <hr>
+        <h4>현재시간</h4>
+        <button onclick="showClock()">show clock</button>
+        <input type="text" id="kk" readonly size="30">
+    </body>
+</html>
