@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>form</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <!-- form: anchor처럼 다른 문서를 실행, 다만 데이터를 담아서 보냄 -->
+        <!-- 1. GET method -->
+        <form action="./getTest.php" method="GET"> <!--action 속성에 들어가는 것이 바로 실행될 문서임 / method 속성은 쓰지 않으면 자동 GET-->
+            <p>이름: <input type="text" name="name"></p>
+            <p>메세지: <input type="text" name="msg"></p>
+            <p><input type="submit" value="확인"></p> <!--이 제출버튼을 클릭하면 form 요소의 action 속성에 지정된 문서가 실행됨 - 즉, 브라우저의 현재 페이지가 변경되는 것임!-->
+        </form>
+
+        <br><hr><br>
+
+        <!-- 2. POST method -->
+        <form action="./postTest.php" method="POST">
+            <fieldset>
+                <legend>input & post method test</legend>                
+                <label for="in">name: </label>
+                <input type="text" id="in" name="name"><br>
+                <label>password: 
+                    <input type="password" name="pw">
+                </label>
+                <p>
+                    gender:
+                    <label>
+                        <input type="radio" name="rg" value="male" checked>male
+                    </label>
+                    <label>
+                        <input type="radio" name="rg" value="female">female
+                    </label>
+                </p>
+                <p>
+                    fruit:
+                    <label>
+                        <input type="checkbox" name="fruit[]" value="apple" checked> Apple  <!--체크박스의 이름은 꼭 배열로 만들 것!(중복값이 넘어갈 수 있도록.._)-->
+                    </label>
+                    <label>
+                        <input type="checkbox" name="fruit[]" value="orange"> Orange
+                    </label>
+                    <label>
+                        <input type="checkbox" name="fruit[]" value="banana"> Banana
+                    </label>
+                </p>
+                <p>
+                    message:
+                    <textarea name="msg" cols="40" rows="5"></textarea>
+                </p>
+                <div>
+                    <select name="selected">
+                        <optgroup label="자동차 브랜드">
+                            <option value="현대">현대</option>
+                            <option value="기아">기아</option>
+                            <option value="쉐보레">쉐보레</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <br>
+
+                <p>
+                    <input type="submit">
+                    <input type="reset">
+                </p>
+
+                <!-- 화면에는 안보이지만 서버에 데이터를 보내고 싶을 때 -->
+                <input type="hidden" name="secret" value="good!">
+            </fieldset>
+
+        </form>
+    </body>
+</html>

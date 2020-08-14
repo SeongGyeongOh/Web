@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport">
+        <title>JS 요소 제어</title>
+
+        <script>
+            function cal() {
+                //id로 html 요소 찾아옴
+                var in1=document.getElementById('in1');
+                var in2=document.getElementById('in2');
+
+                //.value로 요소의 값 찾아옴
+                var num1=in1.value;
+                var num2=in2.value;
+
+                var num3=num1+num2;
+                //가져온 값을 숫자로 바꿔 계산
+                num3=parseInt(num1)+parseInt(num2);
+
+                var result=document.getElementById('result');
+                result.value=num3;
+
+
+            }
+
+                // html의 스타일 변경하기(배경색 변경 함수)
+            function changeColor() {
+                var e=document.getElementById('aa');
+                e.style.backgroundColor="red";
+                e.style.color="blue";
+                e.style.border="2px solid black";
+
+                var es=document.getElementsByTagName('h2'); //여러개일 수도 있기 때문에 리턴이 배열로 온다
+                es[0].style.color="red";
+            }
+
+            // 이미지 변경하기(name 속성값 사용)
+            function changeImg() {
+                var img=document.getElementsByName('img');
+                img[0].src="../Day02/img/cafelatte.jpg";
+            }
+        </script>
+    </head>
+
+    <body>
+        <input type="text" id="in1"><br>
+        <input type="text" id="in2"><br>
+        <button onclick="cal()">계산</button><br>
+        <input type="text" readonly id="result">
+
+        <br><hr><br>
+
+        <!-- html 요소의 특정 스타일 변경 -->
+        <h2 id="aa">This is Heading</h2>
+        <button onclick="changeColor()">change background-color</button>
+
+        <br>
+        <!-- 이미지 변경 -->
+        <img src="../Day02/img/americano.jpg" alt="" width="30%" name="img"><br>
+        <input type="button" value="change Image" onclick="changeImg()">
+        <hr>
+
+        <!-- 제어문...문법적으로 특별히 다른점은 없음 -->
+        <!-- 단, 특이한 점은 script문은 body안에 있어도 되기에 HTML 요소 사이에 script가 있어도 된다 -->
+        <h2>
+            <script>
+                var k="sam";
+                document.write("hello "+k);
+            </script>
+        </h2>
+
+        <!-- 이렇게 제어문을 HTML에 녹여서 사용 -->
+        <table border="1">
+            <tr>
+                <th>no</th>
+                <th>name</th>
+            </tr>
+
+            <script>
+                var arr=["sam", "robin", "hong"];
+                for(var i=0;i<arr.length;i++){
+                    document.write('<tr><td>'+(i+1)+'</td><td>'+arr[i]+'</td></tr>');
+                }
+            </script>
+        </table>
+
+
+    </body>
+</html>

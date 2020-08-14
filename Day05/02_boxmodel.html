@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>box model</title>
+        <meta charset="utf-8">
+
+        <style>
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+            p.border{
+                text-align: justify;
+
+                border-style: solid; /*width 지정 없으면 자동 3px*/
+                /* 경계선 위아래좌우 나눠서 지정 */
+                border-top-style: dotted; 
+                border-bottom-style: dashed; 
+                border-left-style: solid; 
+                border-right-style: outset;
+                /* 경계선 두께 지정 */
+                border-width: 5px;
+                border-width: 10px;
+                border-right-width: 5px;
+                /* 색상 지정 */
+                border-color: teal;
+                border-right-color: tomato;
+                /* 모서리 둥글게 */
+                border-radius: 20px;
+                border-top-right-radius:initial ;
+                /* 경계선 이미지 */
+                /*이미지가 보일 만큼 경계선 두께 조절해야함*/
+                border: 30px solid transparent;
+                border-image-source: url("./border.png"); 
+                border-image-slice:  30 30 ; 
+                border-image-repeat: round;
+
+                /* 크기 (안드로이드와 다르다는 것을 인지할 것!) */
+                width: 70px;
+                width: 50em;
+                width: 70%;
+                height: 50px;
+                height: 250px;
+                /* height: 100%; 이건 무시됨(부모 사이즈를 인지하지 못하기 때문)->하고싶다면 html과 body에도 100%를 설정해 줘야 함 */
+                /* margin */
+                margin-left: 10em;
+                /* margin을 이용한 블럭요소 가운데 정렬 */                
+                margin-left: auto;
+                margin-right: auto;
+                margin: auto;
+            }
+
+            /* 인라인 요소 크기지정 */
+            /* 기본적으로 인라인 요소는 크기 지정이 불가능하다!!ㅠ.ㅠ */
+            a{
+                background-color: red;
+                width: 50%;
+            }
+
+            em{
+                background-color: aqua;
+                width: 50%
+            }
+
+            input{
+                width: 100%;
+                background-color: bisque;
+            }
+
+            img{
+                width: 50px;
+            }
+
+            /* 두 요소의 마진은 서로 겹치게 된다 */
+            #p1{
+                border: 2px solid black;
+                background-color: coral;
+                height: 50px;
+                margin-bottom: 10px;
+            }
+            #p2{
+                color: white;
+                border: 2px solid black;
+                background-color: midnightblue;
+                height: 50px;
+                margin-top: 10px;
+            }
+
+            /* 마진에 음수를 넣으면? */
+            #p1{
+                margin: 0px;
+            }    
+            #p2{
+                margin: 0px;
+                margin-top: -15px;
+                width: 50%;
+            }
+            
+
+            /* 배경 */
+            p#back{
+                margin : 10px;
+                padding: 10px;
+                color: cornsilk;
+                background-color: cornflowerblue;
+                background-image: url("../Day03/media/pig.png"); /*색상과 이미지를 같이 사용하고 싶다면, .jpg는 투명도가 없기때문에 사용하면 안된다*/
+                background-image: url("../Day03/media/giraffe.png"); /*색상과 이미지를 같이 사용하고 싶다면, .jpg는 투명도가 없기때문에 사용하면 안된다*/
+                
+                /* 이미지는 기본 원본사이즈로 지정됨, 배경이미지의 사이즈를 조절하려면? */
+                background-size: 50px 50px;
+                /* 이미지의 반복 여부 */
+                background-repeat: repeat-y;
+                background-repeat: no-repeat;
+                background-position: center;                        
+                background-position: right bottom;                        
+
+                /* 축약형 */
+                background: green url('../Day02/img/programmer.png') no-repeat center;
+
+            }
+
+                /* 배경화면 이미지가 화면에 붙는 방식 지정 */
+            p#attach{
+                    font-weight: bold;
+                    margin: auto;
+                    margin-bottom: 50px;
+                    width: 50%;
+                    height: 300px;
+                    border: 2px solid blue;
+                    overflow: scroll; /* overflow: 영역 바깥으로 튀어나간 부분을 처리하는 방식*/
+
+                    /* 배경 */
+                    background-image: url("../Day03/media/hippo.png");
+                    background-size: 100px 100px;
+                    background-repeat: no-repeat;
+                    background-position: center;
+
+                    /* 배경이미지가 붙는 형태 */
+                    background-attachment: scroll; /*기본, 안에 있는 콘텐츠가 스크롤되어도 이 p요소의 배경은 항상 배경의 포지션을 기반으로 한다!*/
+                    background-attachment: local;/*요소의 콘텐츠와 같이 스크롤됨(콘텐츠의 양이 요소보다 클 때)*/
+                    background-attachment: fixed; /*브라우저의 영역을 기준으로 함! 단, p요소의 배경이므로 p요소의 밖에서는 보이지 않는다 (브라우저 사이즈를 줄이면 테스트 가능)*/
+                }
+
+
+        </style>
+    </head>
+    
+    <body>
+        <!-- 경계선 Border / 요소 크기 /요소 가운데 정렬 -->
+        <p class="border">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam deleniti mollitia, aspernatur accusantium neque eos quas consectetur rerum voluptate exercitationem repudiandae reprehenderit eum amet fugiat, omnis cupiditate fugit nam vitae.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam deleniti mollitia, aspernatur accusantium neque eos quas consectetur rerum voluptate exercitationem repudiandae reprehenderit eum amet fugiat, omnis cupiditate fugit nam vitae.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam deleniti mollitia, aspernatur accusantium neque eos quas consectetur rerum voluptate exercitationem repudiandae reprehenderit eum amet fugiat, omnis cupiditate fugit nam vitae.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam deleniti mollitia, aspernatur accusantium neque eos quas consectetur rerum voluptate exercitationem repudiandae reprehenderit eum amet fugiat, omnis cupiditate fugit nam vitae.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam deleniti mollitia, aspernatur accusantium neque eos quas consectetur rerum voluptate exercitationem repudiandae reprehenderit eum amet fugiat, omnis cupiditate fugit nam vitae.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam deleniti mollitia, aspernatur accusantium neque eos quas consectetur rerum voluptate exercitationem repudiandae reprehenderit eum amet fugiat, omnis cupiditate fugit nam vitae.    
+        </p>
+
+        <!-- 인라인 요소는 기본적으로 width와 height이 안됨 -->
+        <a href="">Google</a>
+        <em>nice to meet you</em><br>
+        <!-- 인라인 요소중에서 width와 height이 되는 요소가 있다 (inline-block 요소들)-->
+        <input type="text">
+        <img src="../Day03/media/giraffe.png" alt="">
+
+        <br>
+        <!-- margin -->
+        <div class="mg">
+            <p id="p1">p1</p>
+            <p id="p2">p2</p>
+        </div>
+        
+        <!-- 배경 -->
+        <p id="back">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, atque cupiditate enim recusandae vel quasi, culpa quam cum facere repellendus eligendi aliquam. Est pariatur eum incidunt assumenda eligendi enim id.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, atque cupiditate enim recusandae vel quasi, culpa quam cum facere repellendus eligendi aliquam. Est pariatur eum incidunt assumenda eligendi enim id.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, atque cupiditate enim recusandae vel quasi, culpa quam cum facere repellendus eligendi aliquam. Est pariatur eum incidunt assumenda eligendi enim id.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, atque cupiditate enim recusandae vel quasi, culpa quam cum facere repellendus eligendi aliquam. Est pariatur eum incidunt assumenda eligendi enim id.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, atque cupiditate enim recusandae vel quasi, culpa quam cum facere repellendus eligendi aliquam. Est pariatur eum incidunt assumenda eligendi enim id.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, atque cupiditate enim recusandae vel quasi, culpa quam cum facere repellendus eligendi aliquam. Est pariatur eum incidunt assumenda eligendi enim id.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, atque cupiditate enim recusandae vel quasi, culpa quam cum facere repellendus eligendi aliquam. Est pariatur eum incidunt assumenda eligendi enim id. 
+        </p>
+        
+        <p id="attach">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde voluptates, voluptatibus ab odit similique ipsam non! Fuga ad adipisci labore. Quibusdam delectus quisquam ducimus, praesentium voluptates nobis aut sit ipsam!
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde voluptates, voluptatibus ab odit similique ipsam non! Fuga ad adipisci labore. Quibusdam delectus quisquam ducimus, praesentium voluptates nobis aut sit ipsam!
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde voluptates, voluptatibus ab odit similique ipsam non! Fuga ad adipisci labore. Quibusdam delectus quisquam ducimus, praesentium voluptates nobis aut sit ipsam!
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde voluptates, voluptatibus ab odit similique ipsam non! Fuga ad adipisci labore. Quibusdam delectus quisquam ducimus, praesentium voluptates nobis aut sit ipsam!
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde voluptates, voluptatibus ab odit similique ipsam non! Fuga ad adipisci labore. Quibusdam delectus quisquam ducimus, praesentium voluptates nobis aut sit ipsam!
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde voluptates, voluptatibus ab odit similique ipsam non! Fuga ad adipisci labore. Quibusdam delectus quisquam ducimus, praesentium voluptates nobis aut sit ipsam!
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde voluptates, voluptatibus ab odit similique ipsam non! Fuga ad adipisci labore. Quibusdam delectus quisquam ducimus, praesentium voluptates nobis aut sit ipsam!
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde voluptates, voluptatibus ab odit similique ipsam non! Fuga ad adipisci labore. Quibusdam delectus quisquam ducimus, praesentium voluptates nobis aut sit ipsam!
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde voluptates, voluptatibus ab odit similique ipsam non! Fuga ad adipisci labore. Quibusdam delectus quisquam ducimus, praesentium voluptates nobis aut sit ipsam!
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde voluptates, voluptatibus ab odit similique ipsam non! Fuga ad adipisci labore. Quibusdam delectus quisquam ducimus, praesentium voluptates nobis aut sit ipsam!
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde voluptates, voluptatibus ab odit similique ipsam non! Fuga ad adipisci labore. Quibusdam delectus quisquam ducimus, praesentium voluptates nobis aut sit ipsam!
+        </p>
+    </body>
+</html>

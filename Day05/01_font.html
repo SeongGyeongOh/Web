@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>글씨 스타일 알아보기</title>
+        <meta charset="uff-8">
+
+        <style>
+            /* CSS 내부 스타일시트 적용 */
+            p{font-family:"Blippo Blk BT", serif;}
+            p{font-family: "문체부 궁체 흘림체", serif;}
+            /* 기본 글꼴 5개 */
+            p{font-family: serif;}
+            p{font-family: sans-serif;}
+            p{font-family: fantasy;}
+            p{font-family: cursive;}
+            p{font-family: monospace;}
+            /* 사용자 정의 글꼴 : 웹폰트 */
+            @font-face {
+                font-family:"My Font";
+                src: url("./KCCDodamdodam.ttf"); /*CSS 다른 파일 경로는 url()을 사용한다*/
+            }
+            p{font-family: "My Font", serif;}
+            /* 글씨 사이즈 */
+            p{font-size: 1.5em;} /*권장 - 원래 사이즈의 n배*/
+            p{font-size: 14pt;}
+            p{font-size: 200%;}
+            p{font-size: 30px;}
+            p{font-size: 2em;}
+            /* 볼드 */
+            p{font-weight: 400;}
+            /* 이탤릭 italic(필기체 느낌의 기울기)  oblique(그냥 기울기) */
+            p{font-style: oblique;}
+            /* 폰트 속성을 한번에 주기 - 축약형 순서 [weight/style] size font-family*/
+            p{font: bold italic 1em "My Font","휴먼옛체",monospace}
+
+
+            /* 텍스트 */
+            /* 텍스트 정렬 */
+            p{text-align: center;}/*가운데 정렬*/
+            p{text-align: left;}
+            p{text-align: justify;} /*양쪽 정렬 맞춰주는 것*/
+            /* 단어 첫글자  */
+            p{text-transform: capitalize;}
+            p{text-transform:uppercase;}
+            /* 텍스트 줄긋기 */
+            p{text-decoration: line-through;} /*가운데에 줄긋기*/
+            p{text-decoration: underline;}
+            p{text-decoration: none;}
+            /* 텍스트 그림자 순서: x축, y축, 떠있는 느낌, 색상*/
+            p{text-shadow: 2px 2px 3px peachpuff;}
+            /* 워드 랩 */
+            p#wordwrap{
+                width: 5em;
+                border: 1px solid purple;
+                /* 워드랩이 없으면 긴 글씨는 영역을 벗어난다(한글 제외) */
+                word-wrap: break-word;
+            }
+            /* 다중 column */
+            p.lorem{
+                column-count: 3; 
+                column-gap: 30px; 
+                column-rule: 3px dashed rebeccapurple;
+            }            
+
+
+        </style>
+    </head>
+
+    <body>
+        <p id="eng">Hello?</p>
+        <p id="kor">안녕하세요??</p>
+        <p class="lorem">
+            <!-- 로렌 입숨을 적용해보자(가상의 글들) -->
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam perferendis porro ipsam perspiciatis. Quam voluptate ea vero sequi necessitatibus aut. Nisi, aspernatur veniam debitis blanditiis vero adipisci fuga voluptatibus harum?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam perferendis porro ipsam perspiciatis. Quam voluptate ea vero sequi necessitatibus aut. Nisi, aspernatur veniam debitis blanditiis vero adipisci fuga voluptatibus harum?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam perferendis porro ipsam perspiciatis. Quam voluptate ea vero sequi necessitatibus aut. Nisi, aspernatur veniam debitis blanditiis vero adipisci fuga voluptatibus harum?
+        </p>
+
+        <p id="wordwrap">
+            <!-- 워드랩에 대해 알아보자 -->
+            한글은 전혀 문제 없이 자동으로 워드랩 됩니다 <br>
+            how about english we have to figure it out
+        </p>
+
+        <!-- 텍스트 정렬 text-align은 블럭요소에만 적용된다!!!(요소 안의 컨텐츠가 움직이는 것이기 때문) -->
+        <div style="text-align: center; background-color: rosybrown;" >Hello</div>
+        <span style="text-align: center; background-color: royalblue;">Nice to meet you!</span> <!--sp  an은 inline 요소이기 때문에 가운데 정렬이 되지 않는다-->
+
+    </body>
+</html>

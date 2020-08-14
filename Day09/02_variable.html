@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript Variable</title>
+        <meta charset="utf-8">
+
+        <!-- Javascript의 코딩 영역 -->
+        <script>
+            // 자료형의 종류
+            // 1. 수치형 : number - 정수, 실수 //Number와는 다른 자료형임
+            // 2. 문자형 : string - 한문자, 문자열
+            // 3. 논리형 : boolean - true, false
+            // 4. 객체형 : object - 내장 객체, 함수 객체  [new 키워드 존재(안쓰는 경우도 있음)]
+            // 5. undefined : 값이 없는 변수의 자료형(아직 자료형이 정해지지 않음)
+            
+            // 변수 선언 - var 변수명
+            //변수를 만들 때 자료형 구분 없음
+            var a;
+            a=10
+            document.write(a)
+            document.write('<br>')
+
+            var b="aaa"
+            document.write(b)
+            document.write('<br>')
+
+            var c=true;
+            document.write(c);
+            document.write('<br>')
+            ///// 여기까지가 기본 자료형//////////
+
+            // 객체를 참조하는 자료형
+            var d=new Date();
+            document.write(d);
+            document.write('<br>');
+
+            // undefined
+            var e;
+            document.write(e);
+            document.write('<br>');
+            
+            if(e==undefined){
+                document.write("undefined도 하나의 값이다");
+                document.write('<br>');
+            }
+
+            ///////// 이처럼 변수에 값이 대입될 때 자료형이 결정된다 - [동적타이핑 언어]//////////
+
+            //자료형을 확인하는 함수
+            document.write(typeof(a)+'<br>');
+            document.write(typeof(b)+'<br>');
+            document.write(typeof(c)+'<br>');
+            document.write(typeof(d)+'<br>');
+            document.write(typeof(e)+'<br>');
+            document.write('<hr>');
+
+            // 자료형의 개념이 없는게 아니다..아래는 당연히 string 타입
+            var f="1";
+            document.write(typeof(f));
+            document.write('<br>');
+
+            // 변수에 값이 대입될 때 자료형이 결정되므로 변수가 가지고 있는 자료형이 변경될 수도 있다
+            var g=10;
+            document.write(g+'<br>');
+            g="Hello number?";
+            document.write(g);
+            
+            document.write('<br>');
+
+            // 심지어 함수도 변수에 대입이 가능하다
+            var h=function(){
+                document.write("book<br>");
+            }
+
+            document.write(h+'<br>'); //함수를 출력하면 함수의 코드가 출력된다!
+            document.write(typeof(h)); //함수의 타입은 function이다
+            document.write('<br>');
+            // 함수를 참조하고있는 변수명으로 함수호출이 가능하다
+            h();
+
+            // 문자열은 참조형 객체가 맞다 (즉, 문자열은 객체 - 메소드가 있다)
+            var s="hello";
+            document.write(s.length+'<br>');            
+            document.write(s.charAt(2));
+            document.write('<br>');
+
+            // 글자 바꾸기 메소드
+            document.write(s.replace('l', 'p')); //자바와는 다르게 한 글자만 변경함 (hello -> heppo)
+            document.write('<br>');
+            document.write(s.toUpperCase());
+            document.write('<br>');
+
+            // 사용자(프로그래머가 만든 객체)정의 객체형도 가능
+            //  - but, JS에는 class라는 문법이 없음(ECMAscript 5버전때부터 class 키워드가 생김)
+            var p={name:"sam", age:"20"}; //JS의 객체만드는 문법(클래스 정의 및 객체 생성)
+            document.write(p.name+'<br>');
+            document.write(p.age+'<br>');
+            document.write('<p>');
+            document.writeln('name : ' + p.name+', age : '+p.age);
+            document.write('</p>')
+
+            document.write('<hr>');
+
+
+            ////특이사항/////
+            // 같은 변수명을 선언해도 에러가 아니다
+            var x=10;
+            document.write(x);
+            document.write('<br>');
+            var x="중복 변수명"
+            document.write(x); //즉, 동명의 변수를 만들면 기존 변수에 값을 대입해버린다
+            document.write('<br>');
+            
+            var y=30;
+            var y;
+            document.write(y); //새로운 값이 대입된 것이 아니기 때문에 그냥 30이 출력된다
+            document.write('<br>');
+
+            // 수치형 값 중 실수값 표기법
+            var z=3.14;
+            document.write(z);
+            document.write('<br>');
+
+            z=123.5e3; //지수 표현법
+            document.write(z);
+            
+
+            
+            ///// 변수 선언할 때 특이하게도 var 키워드 없이도 가능하다 /////
+            //단, 의미가 조금 다르다
+            k="var 키워드 없이 만든 변수"; //이렇게 만든 녀석은 자동으로 전역변수가 된다!
+            document.write(k);
+
+
+            
+        </script>
+
+    </head>
+
+    <body>
+    </body>
+</html>

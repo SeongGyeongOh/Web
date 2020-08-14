@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>부모 사이즈에 대한 테스트</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <!-- 부모 요소의 height 값은 자식요소들의 높이를 감싸지 않을 수도 있다 -->
+        <div style="background-color: yellow; border: 1px dotted blueviolet;">
+            <p style="background-color: cadetblue; padding: 10px;">Hello</p>
+        </div>
+
+        <hr>
+
+        <div style="background-color: pink;">
+            <!-- 인라인 요소의 padding 이나 margin은 부모 높이값에 영향을 주지 않는다 -->
+            <!--왜냐면 인라인 요소는 부모 입장에선는 content 같은 친구이기 때문에.. padding이 커지는 것은 부모 입장에서는 안에 있는 컨텐츠가 커지는 것과 마찬가지이기 때문에 -->
+            <!-- 부모 입장에서는 overflow나 마찬가지임 -->
+            <!-- a요소의 사이즈가 커진 것은 div 입장에선는 콘텐츠가 overflow 된 것에 불과함 -->
+            <a href="" style="background-color: cadetblue; padding: 10px;">Nice</a>
+            <em style="margin: 50px; border: 1px solid black;">Good</em>
+            <strong style="height: 500px; border: 1px solid black; padding: 100px;">nice</strong>
+
+            <!-- 인라인-블럭은 부모요소에게 영향을 준다 -->
+            <!-- <img src="../Day06/media/playstore_graphic.png" alt=""> -->
+            <input type="text" style="margin: 50px;">
+            <img src="../Day06/media/playstore_graphic.png" width="30" height="30" style="padding: 30;">
+        </div>
+    </body>
+
+</html>

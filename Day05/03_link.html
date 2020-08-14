@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>의사선택자 연습</title>
+        <meta charset="utf-8">
+
+        <style>
+            a:link{
+                color: blue;
+            }
+            a:visited{
+                color: red;
+            }
+            a:hover{
+                color: green; font-size: 20px;
+            }
+            a:active{
+                color: gray;
+            }
+
+            /* 모든 요소에 :hover 가능함 */
+            p:hover{
+                color: gray; font-size: 20px; background-color: green;
+            }
+
+            img#img{
+                background-color: tomato;
+            }
+            img#img:hover{
+                background-color: yellow;
+                width: 280px;
+            }
+        </style>
+    </head>
+
+    <body id="an">
+        <a href="http://www.google.com">ANCHOR</a>
+        <p>hello world</p>
+        <img id="img" src="../Day03/media/hippo.png" alt="">
+    </body>
+</html>

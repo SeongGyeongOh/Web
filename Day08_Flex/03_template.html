@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>flex template</title>
+        <meta charset="utf-8">
+
+        <style>
+            *{
+                margin: 0px;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            /* 요소보다 클래스 선택자를 사용해서 다른 요소에 같은 스타일을 지정할때 용이해진다 */
+            /* header */
+            .header{
+                background-color: #0d7a65;
+                height: 160px;
+                display: flex;
+
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: whitesmoke;
+            }
+
+            /* navigation menu */
+            .nav{
+                background-color: #333333;
+                display: flex;
+            }
+            .nav>a{
+                color: whitesmoke;
+                font-size: 13px;
+                text-decoration: none;
+                padding: 5px 20px;
+                margin-right: 2px;
+                text-align: center;
+            }
+            .nav>a:hover{
+                background-color: whitesmoke;
+                color: #333333;
+            }
+
+            /* contents - 좌우로 배치 */
+            .container{
+                display: flex;
+                /* 브라우저 사이즈가 작아지면 바깥으로 나갈 수 있으니까..자동 줄바꿈 */
+                flex-wrap: wrap;
+            }
+            /* 1. aside */
+            .side{
+                flex-grow: 3; 
+                background-color: #d4d3d3;
+                padding: 20px;
+            }
+            .main{
+                flex: 7;
+                background-color: whitesmoke;
+                padding: 20px;
+            }
+
+            /* 실제 웹페이지에는 이미지가 있어야 하지만 아직 넣지 않았으니 영역만 따로 표시 */
+            .fakeimg{
+                background-color: #aaaaaa;
+                width: 100%;
+                padding: 5px;
+            }
+
+            .footer{
+                padding: 20px;
+                background-color: #ddd;
+                text-align: center;
+            }
+
+            /* 반응형 웹 만들기(RWD) */
+            /* 미디어쿼리 적용(해상도에 반응하기) */
+            /* 1. 화면 너비가 700보다 작을때 스타일*/
+            @media screen and (max-width:700px){
+                .container, .nav{
+                    flex-direction: column;
+                }
+            }
+
+
+        </style>
+    </head>
+
+    <body>
+        <!-- 1. note: 사이트를 열었을 때 알림사항을 보여주는 영역 -->
+        <div style="background-color: gold; padding: 10px; text-align: center;">
+            <h5>브라우저 사이즈를 조절하면 반응형</h5>
+        </div>
+
+        <!-- 2. header -->
+        <header class="header">
+            <h1>My Website</h1>
+            <p>With a <strong>flexible</strong> layout</p>
+        </header>
+
+        <!-- 3. NAvigation Menu -->
+        <nav class="nav">
+            <a href="">Link</a>
+            <a href="">Link</a>
+            <a href="">Link</a>
+            <a href="">Link</a>
+        </nav>
+
+        <!-- aside와 section영역 2개를 옆으로 배치 -->
+        <!-- flex로 row 방향 -->
+        <div class="container">
+            <!-- 왼쪽 -->
+            <aside class="side">
+                <h2>About Me</h2>
+                <h5>Photo of me</h5>
+                <div class="fakeimg" style="height: 200px;">Img</div><br>
+                <p>Some text about me</p>
+
+                <h3>More Text</h3>
+                <br>
+                <p>This is More text</p>
+                <br>
+                <div class="fakeimg" style="height: 60px;">Img</div><br>
+            </aside>
+
+            <!-- 메인:오른쪽 -->
+            <section class="main">
+                <article id="section1">
+                    <h2>TITLE HEADING</h2>
+                    <h5>Title description, Dec 12, 202</h5>
+                    <div class="fakeimg" style="height: 200px;">Img</div><br>
+                    <p>some text about description</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, repudiandae tempora. Nostrum esse error sit, vel voluptate dolor fuga incidunt obcaecati assumenda qui doloribus officia molestiae alias nobis? Vero, amet.</p>
+                </article>
+                <article id="section2">
+                    <h2>TITLE HEADING</h2>
+                    <h5>Title description, Dec 12, 202</h5>
+                    <div class="fakeimg" style="height: 200px;">Img</div>
+                    <p>some text about description</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, repudiandae tempora. Nostrum esse error sit, vel voluptate dolor fuga incidunt obcaecati assumenda qui doloribus officia molestiae alias nobis? Vero, amet.</p>
+                </article>
+            </section>
+        </div>
+
+        <!-- footer -->
+        <div class="footer">
+            <h2>Footer</h2>
+        </div>
+    </body>
+</html>

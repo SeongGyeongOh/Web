@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>table</title>
+        <meta charset="urf-8">
+
+        <style>
+           table{
+               border: 2px solid rosybrown;
+               /* 테이블, td, th마다 그어져 있던 선을 하나로 통일시켜줌! */
+               border-collapse: collapse;
+               text-align: center;
+           } 
+           td,th{
+               border: 1px solid rosybrown;
+               padding: 5px 5px;
+           }
+           th{
+               background-color: saddlebrown;
+               color: snow;
+               border-bottom: double black ;
+           }
+           tr:nth-child(2n-1){
+                background-color: darksalmon;
+           }
+           td:first-child{
+               width: 40%;
+           }
+           
+           /* 주의할 점!! */
+           /* table의 자식 tr의 색상을 줘보자 */
+           table>tr{
+                color: red;
+           }
+           /* 기본적으로 table의 첫번째 자식은 tbody라는 요소임! */
+           table tr{
+               color: aqua;
+           }
+           /* tbody에 속성 주기 */
+           table>:nth-child(1){
+                border: 10px  dotted blue;
+           }
+        
+        </style>
+    </head>
+    <head>
+        <table>
+            <tr>
+                <th>이름</th>
+                <th>이메일</th>
+            </tr>
+            <tr>
+                <td>김철수</td>
+                <td>cheol@googl.com</td>
+            </tr>
+            <tr>
+                <td>김영희</td>
+                <td>yeong@googl.com</td>
+            </tr>
+            <tr>
+                <td>김길동</td>
+                <td>gil@googl.com</td>
+            </tr>
+            <tr>
+                <td>김수지</td>
+                <td>soo@googl.com</td>
+            </tr>
+        </table>
+    </head>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day04 연습</title>
+        <meta charset="utf-8">
+
+        <style>
+            @font-face {
+                font-family: "myFont";
+                src: url('./KCCDodamdodam.ttf');
+            }
+
+            @font-face {
+                font-family: "secondFont";
+                src: url('./GodoB.otf');
+            }
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+
+            div.head{
+                border: 2px solid darkblue;
+                text-align: center;
+                margin: 20px;
+            }
+            div.head>p{
+                font-family: "myFont";
+                font-size: 30px;
+            }
+            div.head>p#headline{
+                font-size: 50px;
+                font-weight: bold;
+            }
+
+            p.title{
+                font: bold 30px "secondFont", serif;
+            }
+
+            div.tree{
+                border: 5px solid black;
+                margin: 20px;
+                padding: 20px;
+                background-color: wheat;
+            }
+
+            p.name{
+                margin-top: 10px;
+                width: 100px;        
+            }
+            div.flower{
+                border: 5px solid black;
+                margin: 20px;
+                padding: 20px;
+                background-color: silver;
+            }
+
+            img.img{
+                width: 150px;
+            }
+
+
+        </style>
+    </head>
+
+    <body>
+        <div class="head">
+            <p id="headline">키우고 싶은 식물 리스트</p>
+            <p>my plant list</p>
+        </div>
+
+
+        <div class="tree">
+            <p class="title">나무</p>
+            <p class="name">벚꽃나무</p>
+            <img class="img" src="./img/cherry-blossoms-2218781_640.jpg" alt="">
+        </div>
+
+
+        <div class="flower">
+            <p class="title">꽃</p>
+            <p class="name">수선화</p>
+            <img class="img" src="./img/osterglocken-4139410_640.jpg" alt="">
+        </div>
+
+
+
+    </body>
+</html>

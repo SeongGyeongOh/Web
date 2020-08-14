@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TABLE</title>
+        <meta charset="utf-8"> 
+    </head>
+
+    <body>
+        <!-- 기본 테이블 -->
+        <table border="1">
+            <caption>표</caption>
+            <tr>
+                <th>no</th>
+                <th>name</th>
+                <th>message</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>sam</td>
+                <td>hello</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>robin</td>
+                <td>nice to meet you</td>
+                <!-- 만약 윗 줄과 row의 cell개수가 다르다면? 가능함!-->
+                <td>2020-08-04</td>
+            </tr>
+        </table>
+
+        <hr>
+        <hr>
+
+        <!-- 셀 병합 테이블 -->
+        <!-- rowspan과 colspan은 2줄 이상이 있어야 비교 대상이 있어서 영향을 끼친다! -->
+        <table border="1">
+            <tr>
+                <td rowspan="2">111</td>
+                <td colspan="3">222</td>
+                <td>333</td>
+            </tr>            
+            <tr>
+                <td>444</td>
+                <td>555</td>
+                <td>666666666666666666</td>
+                <td>777</td>
+            </tr>
+             <!-- 표 제목 -->
+             <caption>숫자 테이블</caption> <!--입력 위치에 상관없이 표 상단에 배치된다-->
+        </table>
+
+        <hr>
+        <hr>
+
+        <!-- 테이블의 td안에 다른 요소를 넣을 수 있다 -->
+        <table border="1" width="100%">
+            <tr>
+                <td width="30%">
+                    <a href="http://www.naver.com">NAVER</a>
+                </td>
+                <td>
+                    <ul>
+                        <li>aaa</li>
+                        <li>bbb</li>
+                        <li>ccc</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>테이블 안에 어떤 요소든 넣을 수 있다</p>
+                    <p>테이블 안의 한글은 자동 줄바꿈이 된다</p>
+                </td>
+                <td>
+                    <p>you can put any method in the table</p>
+                    <p>but english is automatically wrap</p>
+                </td>
+                <td>
+                    <img src="./playstore_graphic.png" alt="뭐였더라?" width="100%">
+                </td>
+            </tr>
+        </table>
+
+    </body>
+</html>

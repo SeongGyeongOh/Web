@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>list style</title>
+        <meta charset="utf-8">
+
+        <style>
+            ul.aa{list-style-type: disc;}
+            ul.bb{list-style-type: circle;}
+            /* list-style-position: inside(들여쓰기), outside(기본위치) */
+            ul.cc{list-style-type: square; list-style-position: inside}
+            /* 리스트의 블릿기호를 이미지로(잘 사용 안함-이미지 사이즈 지정 불가) */
+            /* ul.dd{
+                list-style-image: url("../Day03/media/giraffe.png");
+                list-style-position: inside;
+            } */
+
+            ol#ee{
+                list-style-type: lower-alpha;
+                list-style-type: lower-roman;
+                list-style-type: upper-roman;
+                list-style-type: decimal-leading-zero;
+                list-style-type: square; /*unordered list의 속성을 사용한다 해서 에러가 나지는 않지만 사용하지 말자!!*/
+            }
+        </style>
+    </head>
+    <body>
+        <!-- unordered list -->
+         <ul class="aa">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>Javascript</li>
+         </ul>
+         <ul class="bb">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>Javascript</li>
+         </ul>
+         <ul class="cc">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>Javascript</li>
+         </ul>
+         <ul class="dd">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>Javascript</li>
+         </ul>         
+
+         <!-- ordered list -->
+         <ol id="ee">
+             <li>aa</li>
+             <li>bb</li>
+             <li>cc</li>
+             <li>dd</li>
+         </ol>
+    </body>
+</html>

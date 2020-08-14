@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ex</title>
+        <meta charset="utf-8">
+
+        <style>
+            /* display 속성 - block을 inline으로 */
+            p.aa{
+                display: inline-block;
+                width: 300px;
+            }
+            /* 인라인을 블럭으로 */
+            img{display: block;}
+            /* display none값 (안드로이드의 gone과 같은 것) */
+            /* li.bb{display: none;} */
+            li{display: inline; margin: 20px;}
+            /* visibility의 hidden 값(안드로이드의 invisible과 같은 것) */
+            li.bb{visibility: hidden;}
+
+        </style>
+        
+        
+        <style>
+            div.aaa{
+                position: relative;
+            }
+            /* position 속성 */
+            #one{
+                background-color: yellow;
+                width: 200px;
+                height: 50px;
+            }
+            /* position 속성 부여 */
+            /* 1. static(기본, 원래 놓여져야 할 위치에 놓여지는 것) */
+            /* 2. relative(원래 놓여질 자리에서 특정 좌표로 지정 가능) */
+            /* 3. absolute(좌표값을 안주면 문서의 좌상단을 기준으로 함) */
+            /* 4. fixed(브라우저의 창을 기준으로! -스크롤과 상관이 없이 화면에 보임) */
+            #two{
+                background-color: green;
+                width: 200px;
+                height: 50px;
+                position: static;  /*position 값이 static일 때는 좌표 속성이 적용되지 않는다*/
+                position: relative; /*left: 50px; top: 30px;*/ /*static일 때의 위치를 기준으로 움직임 - 다른 블럭에 영향 없음!(margin이 아님)*/                
+                /* absolute 속성을 지정한 부모요소가 position이 static이 아니면 이 absolute는 부모를 기준으로 한다 */
+
+                position: absolute;  /*left: 10px; top: 30px;*/ 
+                position: fixed; right: 50px; bottom: 20px; /*floating action button과 같은 용도로 사용할 수 있음!*/
+
+            }
+            #three{
+                background-color: aqua;
+                width: 200px;
+                height: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <p class="aa">Hello world</p>
+        <a id="aa" href="#">Good day</a>
+        <strong>good morning</strong>
+        <img src="../Day02/img/cappuccino.jpg" alt="">
+
+        <hr>
+        <ul>
+            <li>aa</li>
+            <li class="bb">bb</li>
+            <li>cc</li>
+        </ul>
+
+        <hr>
+
+        <!-- 블럭요소와 인라인 요소를 같이 사용할 때 고려할 점 -->
+        <!-- 블럭요소 안에 다른 블럭이나 인라인을 넣을 수 있다 -->
+        <div style="background-color: burlywood; border: 1px solid black; padding: 15px;">
+            Nice <p>Wonderful</p> World!
+        </div>
+
+        <!-- 인라인 요소 안에는 블럭요소를 넣을 수 없다 (되긴 하는데 이상해짐..)-->
+        <!-- **인라인보다 큰 블럭요소를 자식으로 가질 수 없음! -->
+        <span style="background-color: teal; border: 1px solid black; padding: 15px;">
+            Nice <p>Wolderful</p>World
+        </span>
+
+        <!-- 블럭요소 안에 같은 블럭요소를 넣으면 이상해진다 -->
+        <!-- 동일한 블럭요소의 시작태그를 만나는 순간 앞 태그를 끝난 것으로 간주! (맨 마지막 엔드태그는 더이상 해당 속성이 아님....-->
+        <p style="background-color: tomato; border: 1px solid black; padding: 15px;">
+            Nice <p>Wonderful</p>World
+        </p>
+        <h2>
+            Hello <h2>Hi</h2>Test
+        </h2>
+
+        <!-- 요소 안에 요소를 넣을 때는 줄바꿈을 해주는 것이 좋음!! -->
+        <div>
+            <h2>안녕하세요</h2>
+            <p>빵끗 :)</p>
+        </div>
+
+        <div></div>
+        <hr>
+        <p></p>
+        
+        
+        <!--  *************position 속성****************** -->
+        <div class="aaa">
+            <p id="one">block#1</p>
+            <p id="two">block#2</p>
+            <p id="three">block#3</p>
+        </div>
+
+
+    </body>
+</html>

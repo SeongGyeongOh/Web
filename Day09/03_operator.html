@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS 연산자와 제어문</title>
+        <meta charset="utf-8"> 
+
+        <!-- 스크립트 작성 -->
+        <script>
+            //연산자 중 특이한 점
+            
+            // 비교연산자
+            var a=1;
+            var b="1";
+            var c=1.0;
+            //JS에서 == 비교연산자는 값이 같은지만 비교한다(자료형 검사가 아님) 
+            document.write(a==b); //true
+            document.write('<br>');
+            document.write(a==c); //true
+            document.write('<br>');
+            
+            //자료형과 값을 모두 비교해주는 비교연산자 ===
+            document.write(a===b); //false
+            document.write('<br>');
+            document.write(a===c); //true (둘 다 number 타입!!!)
+            document.write('<br>');
+
+            document.write('<hr>');
+
+            // 0나눗셈
+            document.write(10/0); //C, Java에서는 error, JS는 infinity
+            document.write('<br>');
+
+            // 비트연산자 >>> 
+            var f=10;
+            document.write(f>>2);
+            document.write('<br>');
+            document.write(f>>>2); //양수일 때는 차이점 없음(부호비트 빼고 밈)
+            document.write('<br>');
+
+            var g=-16;
+            document.write(g>>>2); //부호비트까지 밀어버림
+            document.write('<br>');
+
+            // 숫자 표현의 최대 값 : 2^1024 -1
+            document.write(1234567891234567890000000); //너무 길어지면 지수표현으로 바꿔버림
+            document.write('<br>');
+            // 쓸 수 있는 최대값 알아보기
+            document.write(Number.MAX_VALUE);
+            document.write('<br>');
+
+            // 새로운 연산자: in, delete는 배열과 객체 수업때...
+
+            document.write('<hr>');
+
+            
+            ///////////////////////////////////////////
+            //수치형과 문자열의 변환은 매우 잘 할 수 있어야 함
+            var h=1;
+            document.write(typeof(h));
+            document.write('<br>');
+            // number->string  : String(숫자)
+            h=String(h); //스트링 객체 호출하며 객체에 해당 변수 넣기, 자료형 string으로 변환
+            document.write(typeof(h));
+            document.write('<br>');
+            var h=11;
+            //하지만 이렇게 더 많이 쓴다..
+            h=h+"";
+            document.write(typeof(h));
+            document.write('<br>');
+            //string->num : parseInt('숫자')
+            h=parseInt("4");
+            document.write(typeof(h));
+            document.write('<br>');
+            //숫자가 아닌 문자열을 parse하면? 
+            h=parseInt('aaa');
+            document.write(h); //NaN이 출력됨 - Not a Number
+            document.write('<br>');
+            document.write(typeof(h)); //하지만 타입은 그냥 number로 나옴.. 주의할 것
+            document.write('<br>');
+            //소수점 숫자 변환은? parseFloat('숫자')
+            h=parseFloat('2.123');
+            document.write(h);        
+            document.write('<br>');  
+            document.write(typeof(h));
+            document.write('<br>');
+
+            document.write('<hr>');
+
+            //왜 이걸 해야 하는걸까?
+            //사용자의 입력은 무조건 string으로 읽어지기 때문!
+            var age=prompt("당신의 나이를 입력하세요", "0"); //확인을 누르면 해당 값이, 취소를 누르면 null이 리턴된다
+            document.write(age+5); //수치형 산수가 아닌 문자열과 숫자의 결합, 즉 문자열이 된다
+            document.write('<br>');
+            document.write(typeof(age));
+            document.write('<br>');
+                //즉
+            age=parseInt(age);
+            document.write(age+5);
+            document.write('<br>');
+            
+            // 위처럼 prompt같은 다이얼로그로 사용자 입력을 받는 것은 번거롭다
+            // input 요소를 이용해서 입력을 받고 JS에서 제어를 해보자
+            
+
+            
+        </script>
+    </head>
+</html>

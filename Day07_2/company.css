@@ -1,0 +1,63 @@
+*{margin: 0;  padding: 0;}
+ul{list-style: none;}
+a{text-decoration: none;}
+
+#page{
+    width: 820px;
+    margin: auto;
+}
+header{
+    width: 800px;
+    height: 95px;
+    background-color: #2d3a4b;
+
+    /* 자식요소가 absolute일 때, 부모의 좌상단을 기준으로 하기 위해.. */
+    position: relative;
+}
+/* 제목영역의 메인로고 이미지 위치 지정 -absolute 사용*/
+#logo{
+    position: absolute;
+    top: 30px;
+    left: 30px;    
+}
+/* 우상단 메뉴의 위치 지정 */
+#top_menu{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 12px;
+}
+#top_menu a{ color: white;}
+/* 제목영역 메인 네비게이션 메뉴 */
+nav{
+    position: absolute;
+    bottom: 5px;
+    left: 220px;
+    font-size: 16px;
+}
+nav li{
+    display: inline;
+    margin-left: 30px;
+}
+nav li a{
+    color: white;
+}
+
+/* 콘텐츠 영역의 이미지 아래 있는 배너이미지 inline으로 */
+section li{
+    display: inline;
+    margin-left: 50px;
+}
+
+/* footer 이미지 사이즈 조절 */
+footer{
+    width: 800px;
+    height: 90px;
+    margin-top: 20px;
+    background-color: #f1f1f1;
+}
+
+footer img{
+    margin: 10px 0 0 60px;
+}

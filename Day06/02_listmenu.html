@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- 수평 리스트 만들기 -->
+<html>
+    <head>
+        <title>list menu</title>
+        <meta charset="utf-8">
+
+        <style>
+            ul.menu{
+                list-style: none; /*축약형*/
+                border-top: 1.5px solid cornflowerblue;  
+                border-bottom: 1.5px solid cornflowerblue;
+                padding: 10px 0px; /*왼쪽이 위, 아래  / 오른쪽이 왼쪽, 오른쪽  */
+                text-align: center;  /*블럭 요소의 컨텐츠를 가운데로 놓을 때!!!(이미지나 다른 요소여도 상관 없음)*/
+            }
+            ul li{
+                /* li의 Block 요소를 inline 요소로 변경하기 */
+                display: inline;
+                text-transform: uppercase;
+                padding: 0px 50px;
+                /* 자간 간격 띄우기 */
+                letter-spacing: 7px;
+            }
+            ul li a{
+                /* 글씨 스타일부터.. */
+                color: black;
+                text-decoration: none;   
+            }
+            ul li a:hover{
+                color: darkgrey;
+                text-decoration: underline;
+            }
+
+            div#header{
+                background-image: url(../Day06/media/playstore_graphic.png);
+                background-size: cover;
+                color:orange;
+                text-align: center;
+                padding: 3em 0px;
+                font-weight: bold;
+            }
+        
+        </style>
+    </head>
+
+    <body>
+        <!-- 헤더 이미지 하나 넣어보자 -->
+        <div id="header">
+            <h1>HOMEPAGE</h1>
+            <p>This is My Homepage</p>
+        </div>
+        <ul class="menu">
+            <li><a href="#">home</a></li> <!-- anchor 안의 #: 자기 페이지 안의 특정 페이지로 이동하는 것(비워놓지 말고 이걸 쓸 것)-->
+            <li><a href="#">BLOG</a></li>
+            <li><a href="#">about</a></li>
+            <li><a href="#">CONTACT</a></li>
+        </ul>
+    </body>
+</html>

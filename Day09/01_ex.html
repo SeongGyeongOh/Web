@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS test</title>
+        <meta charset="utf-8">
+
+        <!-- Javascript의 정식 표준화 명칭: ECMAscript -->
+
+        <!-- 웹브라우저가 인터프리터(interpreter)를 해서 실행하는 프로그래밍 코드 -->
+        <script>
+            // 이 영역에서는 자바스크립트의 문법체계를 따른다
+            
+            // HTML <body> 안에 했던 모든 작업을 스크립트로 처리 가능
+            // 1. 화면에 Text 출력
+            document.write("Hello world!");
+
+            // 줄바꿈 자동으로 되지 않음
+            document.write("자동 줄바꿈을 하려면 <br>태그 사용");
+
+            document.write("<hr>");
+
+            // HTML의 문법을 직접 스크립트로 작성할 수 있음
+            // "", '' 둘 다 사용 가능하지만, 태그문 안에 큰따옴표가 있으면 작은따옴표를 사용할 것!
+            document.write('<a href="">이런식으로 HTML 문법 사용 가능</a>');
+            
+            document.write('<hr>');
+
+            // 자바스크립트는 프로그래밍 언어이다 - 변수 선언 및 연산이 가능하다
+            var num=10;
+            document.write(num);
+
+            var b="문자열도 문제 없이!";
+            document.write(b);
+
+            // 변수가 객체도 참조할 수 있다
+            b=new Date();
+            document.write(b);
+
+            document.write('<br>');
+            for(var i=0; i<10; i++){
+                document.write(i+'<br>');
+            }
+
+            // 자바스크립트의 존재 이유 - 이벤트에 따른 동적 처리
+            function clickBtn(){
+                alert('clicked');
+                
+                // 이하는 주의할 것
+                // 바디영역이 모두 생성된 뒤에 다시 document.write()를 사용하면 화면이 갱신되어버린다
+                // document.write('button clicked');
+                // HTML의 id가 p1인 요소를 찾아와서 그 안에 글씨 집어넣기
+                var p1=document.getElementById('p1');
+                p1.innerHTML="button clicked";
+            }
+        </script>
+        <!-- // 외부 스크립트 적용 -->
+        <script src="./01_ex.js"></script>
+        
+        <script>
+            // 주의사항 : 문자열 끝에 ; 없어도 된다
+            document.write('asdaf')
+            document.write('asdaf')
+            document.write('asdaf')
+
+            // 세미콜론 없어도 된다고 아래같은 에러는 만들지 말 것!
+            //var x=10 x=8 //에러가 발생하면 발생한 js문서만 실행안됨
+            document.write(x)
+        </script>
+
+    </head>
+
+    <body>
+        <hr>
+        <!-- body 영역은 언제나 head영역 작업 후에 실행된다 -->
+        <p>바디에도 글씨가 있다면??</p>
+        <p>위에서부터 아래로 읽기 때문에 이 영역이 밑으로 나온다</p>
+
+        <!-- 자바스크립트는 이벤트처리에 많이 사용한다 -->
+        <p><button onclick="clickBtn()">button</button></p>
+        <p id="p1"></p>
+    </body>
+</html>

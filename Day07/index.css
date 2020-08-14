@@ -1,0 +1,123 @@
+/* 모든 요소들의 default margin과 padding 제거 */
+*{margin: 0px;  padding: 0px;}
+html{
+}
+/* 화면에 너무 붙어있으니까 마진 주자 */
+body{
+    width: 1024px;
+    margin: auto;
+    background-color: papayawhip;
+    position: relative;
+}
+
+/* 제목줄 */
+header{
+    padding: 5px;
+    text-align: center;
+}
+
+header a{
+    text-decoration: none;
+    color: #333333;
+}
+
+/* nav 메뉴 */
+nav{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+nav ul{
+    border-top: 1px solid brown;
+    border-bottom: 1px solid brown;
+    list-style: none;
+    text-align: center;    
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+nav ul>li{
+    display: inline-block;
+    margin-left: 2em;
+    letter-spacing: .3em;
+}
+
+nav ul li a{
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #333333;
+    line-height: 3em;
+}
+
+nav ul li a:hover{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* 왼쪽 사이드 작업 */
+aside#left{
+    float: left;
+    width: 190px;
+    margin-right: 1em;
+}
+
+aside#left ul{
+    list-style: none;
+}
+
+aside#left ul li{
+    background-color: rgb(190, 148, 120);
+    padding: 5px 10px;
+    border-bottom: 0.5px solid #333333;
+
+}
+
+aside#left ul li a{
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+aside#left ul li:hover{
+    background-color: rgb(165, 117, 85);
+    text-decoration: none;
+    color: white;
+}
+
+aside#left h4{
+    padding: 5px;
+}
+
+
+/* 메인 콘텐츠 영역 */
+section#main{
+    float: left;
+    padding: 31px 0px;
+    width: 600px;
+    margin: auto;
+    position: relative;
+}
+
+/* 오른쪽 사이드 영역 */
+aside#right{
+    float: left;
+    padding: 10px;
+    width: 180px;    
+}
+
+aside#right #shopcart{
+    margin-bottom: 2em;
+}
+
+aside#right #login input{
+    margin-bottom: 5px;
+}
+
+
+/* 푸터 영역 */
+footer{
+    clear: both;
+    background-color: #47310f;
+    color: white;
+    text-align: center;
+    padding: 1em 0px;
+}

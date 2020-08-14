@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>simentic ect...</title>
+        <meta charset="utf-8">
+
+        <style>
+            p#w{
+                background-color: yellow;
+                /* 최소값 지정 width/height*/
+                min-width: 800px;
+                max-width: 1000px;
+            }
+
+            /* 오버플로우 */
+            div#target{
+                border: 1px solid darkblue ;
+                height: 100px;
+                width: 300px;
+                /* 자식요소들이 부모요소보다 클 때 대처법(overflos) */
+                overflow: scroll; /*무조건 스크롤바*/
+                overflow: auto; /*스크롤이 필요하면 스크롤바*/
+                
+            }
+            #target p{
+                background-color: greenyellow;
+                height: 50px;
+                width: 200px;
+            }
+            div.aa{
+                border: 1px solid grey;
+                width: 300px;
+                height: 100px;
+                overflow: auto;
+            }
+            div#box1{
+                background-color: gold;
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                top: 0px; right: 0px;
+                z-index: 1;
+            }
+            div#box2{
+                background-color: red;
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                top: 30px; right: 30px;
+                z-index: -1;
+            }
+            div#box3{
+                background-color: skyblue;
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                top: 60px; right: 60px;
+                z-index: -2;
+            }
+
+        </style>
+    </head>
+    <body>
+        <!-- 요소 크기에 대한 연습 -->
+        <p id="w">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est nesciunt iusto ut explicabo necessitatibus debitis iste omnis enim quisquam, eaque sequi laborum consectetur illum, tenetur reprehenderit molestiae perferendis maiores provident!
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est nesciunt iusto ut explicabo necessitatibus debitis iste omnis enim quisquam, eaque sequi laborum consectetur illum, tenetur reprehenderit molestiae perferendis maiores provident!
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est nesciunt iusto ut explicabo necessitatibus debitis iste omnis enim quisquam, eaque sequi laborum consectetur illum, tenetur reprehenderit molestiae perferendis maiores provident!
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est nesciunt iusto ut explicabo necessitatibus debitis iste omnis enim quisquam, eaque sequi laborum consectetur illum, tenetur reprehenderit molestiae perferendis maiores provident!
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est nesciunt iusto ut explicabo necessitatibus debitis iste omnis enim quisquam, eaque sequi laborum consectetur illum, tenetur reprehenderit molestiae perferendis maiores provident!
+        </p>
+
+        <!-- overflow -->
+        <div id="target">
+            <p>block#1</p>
+            <p>block#2</p>
+            <p>block#3</p>
+            <p>block#4</p>
+            <p>block#5</p>
+        </div>
+
+        <div class="aa">
+            <img src="../Day06/media/pome.png" alt="">
+        </div>
+
+        <!-- z-index: 요소의 놓여지는 순서 지정 -->
+        <div id="box1">box#1</div>
+        <div id="box2">box#2</div>
+        <div id="box3">box#3</div>
+        
+
+    </body>
+</html>

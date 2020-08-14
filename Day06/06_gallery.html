@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>gallery</title>
+        <meta charset="utf-8">
+
+        <style>
+            p{
+                margin: 0px;
+                padding: 0px;
+            }
+            a{
+                text-decoration: none;
+            }
+            div#aa{
+                float: left;
+                margin: 10px;
+                text-align: center;
+                border: 1px solid;
+            }
+            div{
+                float: left;
+            }
+        </style>
+    </head>
+    <body>
+
+        <!-- float을 쓸 때 주의할 점!  -->
+        <!-- float이 적용된 요소는 공중에 떠있는 느낌이니까 그 요소를 감싸는 부모요소의 height에 영향을 준다 -->
+        <!-- 부모요소의 높이값은 자식들을 감싸는 사이즈인데, float은 떠있기 때문에 그 사이즈에 포함되지 않는다 -->
+        <!-- 해결책// 1) 부모요소도 띄우면 된다 (비권장)  2) 부모요소의 height값을 명시적으로 지정! -->
+        <div style="background-color: burlywood; height: 300px;">
+            <h3>이미지 갤러리</h3>
+            <div id="aa"><a href="">
+                    <img src="../Day06/media/storm.jpg" width="110px" height="90px" alt="">
+                    <p>storm</p></a>
+            </div>
+            
+            <div id="aa"><a href="">
+                    <img src="../Day06/media/storm.jpg" width="110px" height="90px" alt="">
+                    <p>storm</p></a>
+            </div>
+            
+            <div id="aa"><a href="">
+                    <img src="../Day06/media/storm.jpg" width="110px" height="90px" alt="">
+                    <p>storm</p></a>
+            </div>
+            
+            <div id="aa"><a href="">
+                    <img src="../Day06/media/storm.jpg" width="110px" height="90px" alt="">
+                    <p>storm</p></a>
+            </div>
+            
+            <div id="aa"><a href="">
+                    <img src="../Day06/media/storm.jpg" width="110px" height="90px" alt="">
+                    <p>storm</p></a>
+            </div>
+            
+            <div id="aa"><a href="">
+                    <img src="../Day06/media/storm.jpg" width="110px" height="90px" alt="">
+                    <p>storm</p></a>
+            </div>
+            
+            <div id="aa"><a href="">
+                    <img src="../Day06/media/storm.jpg" width="110px" height="90px" alt="">
+                    <p>storm</p></a>
+            </div>
+            
+        </div>
+    </body>
+</html>

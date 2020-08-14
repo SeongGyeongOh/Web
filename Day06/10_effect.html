@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>효과들(투명도, 가시성)</title>
+        <meta charset="utf-8">
+
+        <style>
+            img{
+               opacity: 0.4; 
+            }
+            img:hover{opacity: 1.0;}
+            #img1{
+                /* 공간은 차지, 보이지는 않음 */
+                visibility: hidden;
+                visibility: visible;
+            }
+            #img2{
+                /* 공간도 차지 않하고 보이지도 않음(android - gone) */
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- 투명도 -->
+        <h3>opacity</h3>
+        <img id="img1" src="../Day06/media/lion.png" alt="사자" width="150px" height="120px">
+        <img id="img2" src="../Day06/media/pome.png" alt="사자" width="150px" height="120px">
+
+    </body>
+</html>

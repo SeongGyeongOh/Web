@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ex01</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <!-- 요소의 속성과 값의 이름이 같으면 값은 생략 가능-controls, autoplay -->
+        <audio src="./media/old_pop.ogg" controls="controls">
+            브라우저가 오디오 태그를 지원하지 않으면 보이는 글씨
+        </audio>
+        <!-- 브라우저에 따라서 음원의 유형에 대응하기 위해 <source> 태그 사용을 권장함 (차례대로 내려감)-->
+        <audio controls>
+            <source src="./media/old_pop.mp3" type="audio/mp3">
+            <source src="./media/old_pop.ogg" type="audio/ogg">
+                브라우저가 오디오 태그를 지원하지 않으면 이 글씨가 보입니다.
+        </audio>
+        <br>
+        <!-- 비디오 -->
+        <video src="./media/movie.ogv" controls>
+            비디오가 지원되지 않습니다.
+        </video>
+        <br>
+        <!-- 소스 태그 사용 -->
+        <video controls width="640" height="480" poster="../Day02/coffee.gif">
+            <source src="./media/trailer.mp4" type="video/mp4">
+            <source src="media/trailer.ogv" type="video/ogg"> <!--주의! 비디오의 ogv 타입은 ogg로 작성한다-->
+            <source src="./media/trailer.webm" type="video/webm">
+                비디오가 지원되지 않습니다
+        </video>
+        <br>
+        <hr>
+        <br>
+        <!-- iframe: 다른 html 문서를 삽입하는 요소 -->
+        <iframe src="../Day02/ex_coffee.html" width="500" height="400"></iframe>
+        <!-- 다른 웹사이트의 문서도 표시 가능 (https는 안나오는게 많음) -->
+        <iframe src="http://kamniang.dothome.co.kr" width="500" height="400" ></iframe>
+        <!-- 링크에 의해 iframe에 열리는 문서를 지정할 수 있음 -->
+        <br>
+        <iframe src="" name="frame01" width="500" height="400"></iframe>
+        <a href="http://www.w3c.org" target="frame01">www.w3c.org-웹 공식사이트</a>
+        <!-- iframe의 경계선을 안보이게 설정 가능 -->
+        <br>
+        <hr>
+        <iframe src="../Day02/ex_homepage.html" width="100%" height="800" frameborder="0"></iframe>
+
+        <!-- div: 논리적 영역 구분 요소 -->
+        <br>
+        <hr>
+        <br>
+        <div style="background-color: yellow; border: 2px solid; padding: 10px">
+            <h2>제목 헤드라인</h2>
+            <p>여기는 컨텐츠 영역</p>
+        </div>
+
+        <!-- div의 블럭요소 특징 -->
+        <p>
+            안녕하세요. 
+            <div style="color: red;">홍길동</div>
+            입니다.
+        </p>
+        <!-- span: div와 같이 영역을 잡는 요소이면서, Inline 요소 -->
+        <div>
+            <p>
+                안녕하세요.
+                <span style="color: blue;">임꺽정</span>
+                입니다.
+            </p>
+        </div>
+        
+        
+        <!-- div의 대표적 사용 유형: Website의 기본 구조를 잡기 -->
+        <div id="header" style="background-color: pink; height: 20px;"></div>
+        <div id="content" style="background-color: cornflowerblue; height: 100px;"></div>
+        <div id="footer" style="background-color: purple; height: 20px;"></div>
+        
+    </body>
+</html>

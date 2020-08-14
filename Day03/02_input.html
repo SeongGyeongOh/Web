@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>input</title>
+        <meta charset="utf-8">
+    </head>
+    
+    <body>
+        <!-- input요소와 속성들 -->
+        <!-- type="text" : 한 줄 입력 -->
+        <!-- name="" : 서버에 전송할 때의 식별자(like...key)-->
+        <input type="text" size="40" name="input01"><br>
+        <!-- type="password" -->
+        비밀번호: <input type="password"><br>
+
+        <!-- type="radiobutton" : name 값이 같아야 한 그룹으로 인식된다/n -->
+        라디오버튼: 
+        <input type="radio" name="gender" value="female">여성
+        <input type="radio" name="gender" value="male">남성
+        <br>
+        <!-- <label>을 사용하면 글씨를 클릭해도 선택되도록 하루 수 있음(id로 두 개를 연결함) -->
+        <input type="radio" name="gender2" value="aaa" id="rb" checked> <!--checked="checked", 선택된 상태로 시작함-->
+        <label for="rb">aaa</label>
+        <input type="radio" name="gender2" value="bbb" id="rb2">
+        <label for="rb2">bbb</label>
+        
+        <br><hr><br>
+        <!-- 체크박스: 라디오와 같이 같은 이름을 가져야 한 그룹이 됨 -->
+        <!-- <label>요소 안에 input 요소를 넣으면 자동 for속성처럼 사용이 가능함 -->
+        <label><input type="checkbox" name="fruit" value="apple">Apple</label>
+        <label><input type="checkbox" name="fruit" value="peach">Peach</label>
+        <label><input type="checkbox" name="fruit" value="orange">Orange</label>
+        <!-- php에서 선택된 checkbox들의 value값이 배열로 전달됨(key=fruit, value?) -->
+
+        <br><hr><br>
+        <!-- 제출/리셋: form 요소가 있어야만 의미가 있는 녀석들(지금은 생김새만..)-->
+        <!-- 동작을 시키는 것이기 때문에 name 속성이 필수가 아님! -->
+        <input type="submit" value="전송">
+        <input type="reset" value="새로고침">
+
+        <br><hr><br>
+        <!-- 버튼 -->
+        <!-- 1. input의 타입으로 지정 -->
+        <input type="button" value="중복 체크" onclick="alert('중복된 값입니다')"> <!--""안에 ""는 사용하면 안됨!-->
+        <!-- 2. <button> -->
+        <button onclick="alert('clicked')">버튼</button>
+        <!-- form 요소 안에서는 <button>의 동작에 오류가 발생함...(버튼이 오류가 나거나 폼 요소에 오류가 나거나) 그러니까 이곳에는 <input type="button">으로 쓸 것 -->
+        <br><hr><br>
+        <!-- 이미지로 버튼을 대체 -->
+        <button><img src="./media/giraffe.png" width="50" height="50"></button>
+        <input type="image" src="./media/pig.png" width="50" height="50"> <!--<form>에서 사용할 때 submit과 같은 역할을 한다-->
+        <a href=""><img src="./media/hippo.png" width="50" height="50"></a>
+
+        <br><hr><br>
+        <!-- 여러줄 입력 -->
+        <textarea name="text" id="" cols="30" rows="10">글씨가 있는 상태에서 시작!</textarea>
+        <br>
+        <!-- 콤보박스 -->
+        <select name="selected" id="">
+            <option value="AAAAA">AAAAA</option>
+            <option value="BBBBB">BBBBB</option>
+            <option value="ccc">ccc</option>
+        </select>
+        <!-- optionGroup -->
+        <select name="selected2" id="">
+            <optgroup label="알파벳">
+                <option value="aaa">aaa</option>
+                <option value="bbb">bbb</option>
+                <option value="ccc">ccc</option>
+            </optgroup>
+            <optgroup label="한글">
+                <option value="ㄱㄱㄱ">ㄱㄱㄱ</option>
+                <option value="ㄴㄴㄴ">ㄴㄴㄴ</option>
+                <option value="ㄷㄷㄷ">ㄷㄷㄷ</option>
+            </optgroup>
+        </select>
+        <br><hr><br>
+    
+        <!-- 필드셋: 영역을 그룹화(테두리선/라벨 적용) -->
+        <fieldset>
+            <legend>개인명세</legend>
+            <label>이름 : <input type="text"></label><br>
+            <label>주소 : <input type="text"></label>
+        </fieldset>
+    </body>
+
+
+
+</html>

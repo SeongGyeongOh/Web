@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>애니메이션</title>
+        <meta charset="utf-8">
+
+        <style>
+            #aa{
+                width: 100px;
+                height: 100px;
+                background-color: coral;
+                border-radius: 50px;
+                text-align: center;
+                position: absolute;
+                /* left: 50px; top: 50px; */
+
+                /* 아래에 설계한 애니메이션 적용 */
+                animation-name: bounce;
+                animation-duration: 2s;
+                animation-iteration-count: 5;
+                 /*속도 조절 - 튕기는 느낌 적용*/
+            }
+            /* 애니메이션 설계 */
+            @keyframes myanim
+            {
+                0%{left: 50px; top: 50px;}
+                50%{left: 0px; top: 0px; }
+                100%{left: 50px; top: 50px; }
+            }
+            @keyframes bounce
+            {
+                from, to{bottom: 0px; animation-timing-function: ease-out;} /*form=0%, to=100%*/
+                50%{bottom: 200px; animation-timing-function: ease-in;}
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="aa"></div>
+    </body>
+</html>

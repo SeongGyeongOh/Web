@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS dialog</title>
+        <meta charset="utf-8">
+
+        <script>
+            // 경고창이 여러개면 차례로 실행됨
+            alert();
+            alert("알림");
+
+            // 사용자에게 확인 또는 취소를 선택하게 하는 다이어로그
+            // 확인/취소의 선택 결과는 함수의 리턴값으로 - true/false
+            var answer=confirm("이건 컨펌 알림입니다~");
+            document.write(answer);
+            
+            document.write('<br>');
+
+
+            // 사용자 입력 ! 리턴값은 입력된 string임
+            // 단, 취소를 누르면 null값이 등장!
+            // 값이 입력 안돼있으면 빈 문자열 리턴
+            // 두 번째 파라미터로 input 영역 안에 기본값 지정 가능
+            var answer2=prompt("이건 사용자 입력 다이어로그임 너의 나이를 입력하라", "0");
+            document.write(answer2+'<br>'); //
+
+            function aaa(){
+                document.write('화면 전체 갱신됨')
+            }
+
+        </script>
+    </head>
+
+    <body>
+        <button onclick="aaa()">click</button>
+    </body>
+</html>

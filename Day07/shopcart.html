@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>장바구니</title>
+        <meta charset="utf-8">
+
+        <style>
+            table{
+                border: 2px solid #333333;
+                border-collapse: collapse;
+                margin-bottom: 15px;
+            }
+            td, th{
+                border: 1px solid #333333;
+                padding: 5px 10px;
+            }
+
+            th{
+                background-color: tan;
+            }
+
+            tr:nth-child(2n-1){
+                background-color: rgb(248, 240, 229);
+            }
+
+            caption{
+                text-decoration: underline;
+                padding-bottom: 10px;
+            }
+            a{
+                display: inline-block;
+                margin-top: 10px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+
+        <form action="#">
+            <table>
+                <caption>Shopping Cart</caption>
+                <tr>
+                    <th>품목</th>
+                    <th>가격</th>
+                    <th>수량</th>
+                    <th>합계</th>
+                </tr>
+                <tr>
+                    <td>컴퓨터 세트</td>
+                    <td>2,000,000</td>
+                    <td><input type="number" step="1" value="0" min="0"></td>
+                    <td><input type="text" size="6" value="0"></td>
+                </tr>
+                <tr>
+                    <td>티셔츠</td>
+                    <td>50,000</td>
+                    <td><input type="number" step="1" value="0"min="0"></td>
+                    <td><input type="text" size="6" value="0"></td>
+                </tr>
+                <tr>
+                    <td>음악파일</td>
+                    <td>1,000</td>
+                    <td><input type="number" step="1" value="0" min="0"></td>
+                    <td><input type="text" size="6" value="0"></td>
+                </tr>
+                <tr>
+                    <td>영화파일</td>
+                    <td>5,000</td>
+                    <td><input type="number" step="1" value="0" min="0"></td>
+                    <td><input type="text" size="6" value="0"></td>
+                </tr>
+            </table>
+
+            <input type="submit" value="계산">
+            <input type="submit" value="구매">
+            <input type="reset" value="초기화">
+        </form>
+
+        <a href="./index.html">홈으로 돌아가기</a>
+        
+    </body>
+</html>
