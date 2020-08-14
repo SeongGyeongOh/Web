@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS 객체 연습</title>
+        <script>
+            document.write("<h2>사용자 정의 객체</h2>");
+
+            // 1. 리터럴 객체 생성 (객체를 생성하며 동시에 설계)
+            var me={
+                name:"성경",
+                age:27,
+
+                show:function(){
+                    document.write(this.name+":"+this.age);
+                }    
+            }
+            me.show();
+            document.write('<br>');
+            // 리터럴 객체를 보완하기 위한 방법 - clone
+            var meAgain=Object(me);
+            meAgain.show();
+            document.write('<br>');
+            
+
+
+            // 2. 생성자 함수를 이용한 객체 생성
+            function Me(){
+                this.name="성경";
+                this.age=20;
+
+                this.show=function(){
+                    document.write(this.name+":"+this.age);
+                }
+            }
+            var me2=new Me();
+            me2.show();
+            document.write('<br>');
+            // 생성자 함수를 이용하여 생성자처럼 파라미터 전달하기
+            function Person(name, age, major){
+                this.name=name;
+                this.age=age;
+                this.major=major;
+
+                this.print=function(){
+                    document.write(this.name+'<br>'+this.age+'<br>'+this.major);
+                }
+            }
+            var person=new Person("동동", 12, "국어국문");
+            person.print();
+        </script>
+
+
+
+        <script>
+            document.write("<h2>프로토타입</h2>");
+            // 프로토타입
+
+            function Person(name, age){
+                this.name=name;
+                this.age=age;
+            }
+
+            Person.prototype.show=function(){
+                document.write(this.name+":"+this.age);
+            }
+
+            var per1=new Person("꿀꿀", 10);
+            per1.show();
+            document.write('<br>');
+
+            var per2=new Person("영희", 9);
+            per2.show();
+            document.write('<br>');
+        </script>
+
+        <script>
+            document.write("<h2>Date</h2>");
+            var today=new Date();
+            var month=today.getMonth()+1;
+            var year=today.getFullYear();
+            var date=today.getDate();
+
+            document.write(year+"-"+month+"-"+date);
+        </script>
+    </head>
+
+    <body>
+        
+
+    </body>
+</html>
