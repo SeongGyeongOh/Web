@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>exeption</title>
+        <meta charset="utf-8">
+
+        <script>
+            document.write("<h2>예외처리</h2>");
+            // 예외처리 (error와 다르다는 것 인지하기)
+
+            // alet('aaa'); //여기서 에러가 나면 다음줄이 실행되지 않는다
+
+            //예외처리란? 에러가 발생해도 그 부분만 실행하지 않고 나머지는 정상적으로 실행되도록 하는 기법
+            // try{
+            //     alert('aaa');
+            // }catch(e){
+            //     document.write(e+'<br>');
+            // }
+
+            document.write("예외처리"); 
+
+            // finally
+            try {
+                // aaa();    
+                kkk(); 
+            } catch (error) {
+                document.write(error+'<br>');
+            }finally{
+                //에러가 나든 안나든 무조건 실행되는 영역
+                document.write("hello?"+'<br>');
+            }
+
+            function kkk(){
+                document.write("kkk"+'<br>');
+            }
+
+            // thow - 일부러 에러를 발생시켜서 예외상황처리를 하는 것
+            // ex. 결과로 음수가 나오는걸 원하지 않을 때
+            try{
+                var a=10;
+                var b=20;
+
+                var c=a-b;
+                if(c<0) throw "음수결과는 노노";
+
+                document.write("결과 : "+c+'<br>');
+            }catch(e){
+                document.write('에러 : '+e);
+            }
+        </script>
+
+        <!-- 객체와 Json 데이터를 변환하기 -->
+        <!-- Json의 목적 : 데이터 전송 -->
+        <script>
+            document.write('<hr>');
+            document.write('<h2>Json-객체 변환</h2>');
+
+            // js의 객체를 json문자열로 변환해보자
+            var person={
+                name:"sam",
+                age:20,
+                male: true,
+
+                //객체 안의 객체일 때
+                test: {aaa:"aaa", bbb:"bbb"},
+
+                // 멤버함수(메소드)...는 json에 포함되지 않는다(이건 데이터가 아니라 그냥 코드니까...)
+                show:function(){
+                    document.write("name : "+name);
+                }
+            }
+
+            var personJson=JSON.stringify(person);
+            document.write(personJson+'<br>');
+
+            // json문자열을 객체로 변환해보자
+            var jsonStr='{"name":"bmw", "year":2020, "model":520, "sold":true, "color":"red"}';
+            var jsonObj=JSON.parse(jsonStr);
+
+            document.write(jsonObj.name+'<br>');
+            document.write(jsonObj.year+'<br>');
+            document.write(jsonObj.model+'<br>');
+            document.write(jsonObj.sold+'<br>');
+            document.write(jsonObj.color);
+        
+        </script>
+
+        <body></body>
+    </head>
+</html>

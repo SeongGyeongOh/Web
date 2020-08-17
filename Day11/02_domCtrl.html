@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM CONTROL</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <!-- DOM 노드의 삭제와 동적 생성 및 추가 -->
+        <button onClick="addText()">add Text Node</button>
+        <br>
+        <button onClick="addElement()">add Element Node</button>
+        <br>
+        <button onClick="removeNode()">Remove Node</button><br>
+        <p class="pp"></p>
+
+        <script>
+            function addText(){
+                // 텍스트 노드를 추가하기
+                // 먼저, p요소에 추가할 노드를 생성하자
+                var node=document.createTextNode("새롭게 생성된 텍스트 노드임");
+                var node=document.createTextNode('<a href="">Google</a>'); //태그문을 자식 요소로 만들면 어떻게 될까? ->그냥 텍스트로 인식됨
+
+                var targets=document.getElementsByClassName('pp');
+                targets[0].appendChild(node); //위에 생성한 자식을 추가하기 - 이 녀석은 태그문을 인식하지 못함!
+                // targets[0].appendChild(node+'<br>'); // 이 녀석은 태그문을 인식하지 못함!
+            
+                targets[0].textContent='<a href="">GOOGLE</a>';
+            }
+
+            function addElement(){
+                var node=document.createElement('a');
+
+                // 속성노드 추가
+                var attr=document.createAttribute('href');
+                attr.value="http://www.google.com";
+                node.setAttributeNode(attr);
+
+                // 텍스트 노드도 추가하기
+                var text=document.createTextNode("google");
+                node.appendChild(text); //append는 뒤로 가서 붙고, insertBefore을 쓰면 앞에 가서
+
+                // p요소에 a요소 붙이기
+                var targets=document.getElementsByClassName("pp");
+                targets[0].appendChild(node);
+
+                // 위 작업을 축약형으로
+                targets[0].innerHTML='<a href="">NAVER</a>'; //=는 바꿔치기, +=는 덧붙이기
+
+            }
+
+            function removeNode(){
+                var target=document.getElementsByClassName('pp')[0]; //바로 0번째 요소를 찾아옴
+                var node=target.firstElementChild;
+                target.removeChild(node);
+            }
+        </script>
+
+        <!-- 새로나온 요소찾는 기법 -->
+        <!-- css의 선택자를 이용 -->
+        <hr>
+        <h4 id="h1">aaa</h4>
+        <h4 class="h2">bbb</h4>
+        <h4>ccc</h4>
+        <h4>ddd</h4>
+
+        <script>
+            document.querySelector('#h1');
+            document.querySelector('.h2');
+            var e=document.querySelector('h4');
+            e.onclick=function(){
+                alert('aa');
+            } //이 방법으로는 한놈만 찾아짐
+
+            // 여러마리를 찾고싶다면
+            var es=document.querySelectorAll('h4');
+            es[1].onclick=function(){
+                alert(this); //this는 클릭 이벤트를 발동한 h4번 요소를 말한다
+            }
+
+            es[2].onclick=function(e){
+                alert(e); // 여기서 e는 마우스 이벤트 객체임
+            }
+        </script>
+    </body>
+
+</html>

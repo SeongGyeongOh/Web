@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <!-- DOM(Document Object Model) : 문서 안의 모든 요소를 구조화-->
+        <!-- Dom tree의 가지에 있는 요소 하나하나를 node라고 부름 -->
+        <!-- node의 3가지 종류 : 1)element node  2)attribute node  3)text node -->
+        <!-- 노드간의 관계 : parent-child, sibling node <-이 관계를 이용해서 요소들을 제어 -->
+
+        <p id="p1"><a href="" target="">bbb</a></p>
+        
+        <hr>
+
+        <script>
+            //id=p1인 p요소
+            var e=document.getElementById("p1");
+            document.write(e.nodeType+", "+e.nodeName+'<br>'); //nodeType 1=요소 노드 (속성은 2, 텍스트는 3)
+
+            // p요소의 속성
+            var attrs=e.attributes;//속성들을 배열로 리턴해줌
+            document.write(attrs[0].nodeType+' ,'+attrs[0].nodeName+'<br>');
+            // 속성의 값
+            document.write(attrs[0].value+'<br>');
+
+
+            // p요소의 첫번째 자식노드
+            var e=e.firstChild; //anchor 요소
+            document.write(e.nodeType+", "+e.nodeName+'<br>');
+            // a요소의 속성
+            var attrs=e.attributes;
+            document.write(attrs[0].nodeType+' ,'+attrs[0].nodeName+'<br>');
+            document.write(attrs[1].nodeType+' ,'+attrs[1].nodeName+'<br>');
+
+            // a요소의 첫 번째 자식노드
+            var t=e.firstChild;
+            document.write(t.nodeType+', '+t.nodeName+'<br>');
+            document.write(t.data); 
+        </script>
+
+        <hr>
+
+        <!-- 자식노드들을 제어하기 -->
+        <ul>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+            <li>ddd</li>
+        </ul> <!--이 ul은 엔터 포함 총 9자식을 가지고 있음-->
+
+        <ul>
+            <li>kkk</li>
+            <li>sss</li>
+        </ul>
+
+        <script>
+            // li요소의 전체 개수를 알고싶다면
+            var items=document.getElementsByTagName('li');
+            document.write(items.length+'<br>');
+
+            // 첫 번째 ul의 자식들 중 li요소의 개수
+            var lists=document.getElementsByTagName('ul');
+            items=lists[0].getElementsByTagName('li');
+            document.write(items.length+'<br>');
+
+            // 이 중에서 세 번째 li의 텍스트값 구하기
+            document.write(items[2].firstChild.data+'<br>');
+
+            // ul요소의 자식 중에서 첫 번째 자식의 텍스트 노드값 알아내기
+            document.write(lists[0].firstChild.nodeName+'<br>'); //값 : #text - 줄바꿈 문자도 자식으로 쳐진다!!!!
+
+            // 이거를 원하지 않는다면? 첫 번재 요소 자식 찾아오자!!
+            document.write(lists[0].firstElementChild.nodeName+'<br>');
+            document.write(lists[0].firstElementChild.firstChild.data+'<br>');
+            document.write(lists[0].lastElementChild.firstChild.data+'<br>');
+        </script>
+
+        <hr>
+        <!-- 형제 요소 찾아 제어하기 -->
+        <div>
+            <p>Fruits List</p>
+            <ul>
+                <li>apple</li>
+                <li>banana</li>
+                <li>orange</li>
+            </ul>
+        </div>
+
+        <!-- onClick 함수에 의해 실행되는 clickBtn() 함수에 this를 전달함으로서 클릭을 한 button 객체를 전달 -->
+        <button onclick="clickBtn(this)">버튼</button> <!-- 본 객체(로 취급되는) this를 파라미터로 바로 전달!!-->
+        <p></p>
+
+        <script>
+            function clickBtn(e){ //버튼 요소객체가 날라온 상태
+
+
+                //div 요소 찾기
+                var divs=document.getElementsByTagName('div');
+                
+                //div의 첫 번째 자식요소 p 찾기
+                var p=divs[0].firstElementChild;
+
+                // p요소 다음에 있는 ul요소 찾기
+                var ul=p.nextElementSibling; //p 다음의 형제 요소노드 찾기 (엔터는 말고!!!)
+                // document.write(ul.nodeName+'<br>');
+
+                // ul의 자식노드들 찾기
+                // document.write(ul.childElementCount+'<br>'); //엔터키를 제외한 자식노드 숫자
+
+                // ul의 자식요소들의 텍스트값들을 버튼 다음에 있는 p요소에 출력하기
+                // p요소에 현재 id가 없어서 찾기가 힘들다..... -
+                //    ->버튼 요소를 찾아서 그 다음 형제요소들 제어
+                //      그러고 보니..지금 작성하고 있는 영역은 버튼을 클릭하면 나오는 함수!
+                //      그렇다면 이 함수 안에서 이 버튼을 찾을 수 있지 않을까?????
+                // document.write(e.nodeName+'<br>'); //위 파라미터로 전달받은 e가 버튼이라는것 확인!
+                e.nextElementSibling.innerHTML="aaa"; //innerHTML(그 안에 적어라)
+                
+            }
+        </script>
+
+    </body>
+</html>
