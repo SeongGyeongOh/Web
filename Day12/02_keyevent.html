@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>키보드 이벤트</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body onkeypress="aaa()">
+        <!-- 눌러진 키보드의 값 가져오기 -->
+        <!-- keypress(소문자 대문자 구분, 방향키 안됨), keydown(소문자 대문자 구분 없음, 방향키 됨), keyup -->
+        <h3 id="hh"></h3>
+
+        <script>
+            function aaa(){
+                // 키이벤트의 입력값은 window객체의 속성으로 존재한다
+                // window.event 객체 - 이벤트를 관리하는 녀석
+                var h=document.getElementById('hh');
+                var keycode=window.event.keyCode; //window 생략 가능
+                h.innerHTML=keycode+','+String.fromCharCode(keycode)+','+window.event.shiftKey; //키코드 + 키코드 문자 변환+shift키가 눌러졌는지 여부
+            }
+        </script><hr>
+
+        <!-- 주의할 사항 : 이벤트 처리방식에 따라 실행되는 콜백함수 안에서의 this 키워드의 객체가 살짝 다르다 -->
+        <input onkeyup="bbb()" type="text">
+        <script>
+            var bbb=function(){
+                alert(this); //this: 이 친구는 이 문서의 최상위객체 - window
+            }
+        </script>
+
+        <input id="in1" type="text">
+        <script>
+            document.getElementById('in1').addEventListener('keyup', function(){
+                alert(this); // this: 이 친구는 리스너가 추가된 요소- 여기서는 HTML Input임
+            });
+
+        </script><hr>
+
+        <!-- 새로 생긴 이상한 기능 : id로 요소를 찾을 때 getElementXXX를 사용하지 않는법..?!?! -->
+        <!-- 이것은 마치 like 코틀린... id 속성값이 이미 window객체의 멤버변수가 되어있음!-->
+        <button id="btn1">버튼버튼</button>
+        <h2 id="h2h2"></h2>
+
+        <script>
+            btn1.onclick=function(){
+                h2h2.innerHTML="오 마치 코틀린같은 느낌느낌";
+            }
+        </script>
+        
+
+    </body>
+</html>
