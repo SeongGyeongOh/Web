@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Canvas Game</title>
+
+        <script>
+            // 게임에 사용될 이미지들 전역변수로 만들기
+            var imgBack=new Image();
+            imgBack.src="./img/bg.png"; //배경이미지
+            
+            var imgPlayer=new Image();
+            imgPlayer.src="./img/ms14.png"; //플레이어 이미지
+
+            // 플레이어 이미지가 그려질 좌표값(이미지의 가운데 좌표)
+            var x=200, y=250; //화면의 가운데
+            var w=40, h=40; //이미지 높이와 넓이의 절반
+
+            var dx=1, dy=1; //플레이어의 이동속도와 방향을 결정
+
+            var canvas; //도화지
+            var context; //그림그리는 화가 객체
+
+            // 적군 이미지 떨어지게 해보자
+            var imgMush=new Image();
+            imgMush.src="./img/ms21.png";
+
+            // 적군 이미지 객체들
+            var enemies=new Array();
+
+            // body 로딩이 완료됐을 때 실행되는 함수
+            function loaded(){
+                canvas=document.getElementById('c1');
+                context=canvas.getContext('2d');
+
+                runGame();
+                window.setInterval(runGame, 10); //10 millisecond마다 runGame을 다시 실행해라
+            }
+            
+            // 게임을 실행시키는 함수
+            function runGame(){
+
+                // 적군을 만들어라
+                var p=Math.floor(Math.random()*100); //0~19
+                if(p==0) makeEnemy();
+
+                // 그림을 그려라
+                context.drawImage(imgBack, 0, 0, 400, 500);
+                context.drawImage(imgPlayer, x-w, y-h, 80, 80); //절반 절반을 뺀 중간 위치 찾아오기
+
+                // 적군들 그리기
+                enemies.forEach(function(e){
+                    context.drawImage(imgMush, e.x-40, e.y-40, 80, 80);
+                });
+
+                // 캐릭터를 움직여라(좌표를 변경해라)
+                x+=dx; 
+                y+=dy; //값의 사이즈에 따라 속도가 빨라진다
+
+                // 플레이어가 화면밖으로 나가지 않도록
+                if(x+w>=400||x-w<=0) dx=-dx;
+                if(y+h>=500||y-h<=0) dy=-dy;
+
+                // 적들의 
+                // enemies=enemies.map(function(e){
+                //     e.y+=e.y+e.dy;
+                //     return e;
+                // })
+
+                enemies.forEach(function(e){
+                    e.y+=e.dy;
+                });
+            }
+
+            // 키보드 눌렀을 때
+            function keyDown(){
+                var keycode=event.keyCode;
+                switch(keycode){
+                    case 37: dx=-2; break; //left key
+                    case 38: dy=-2; break; //up
+                    case 39: dx=2; break; //right
+                    case 40: dy=2; break; //down
+                }
+            }
+
+
+            // 적군 만들기
+            function makeEnemy(){
+                // 현재 적군 객체개수
+                var n=enemies.length;
+                // 적군이 떨어질 랜덤 위치
+                var a=Math.random()*400; //0~399중 하나
+                var b=Math.random()*3+1; //1~4
+                enemies[n] = {
+                    x:a,
+                    y:-40,
+
+                    dy:b
+                };
+            }
+
+
+            // 키보드 띄었을 때
+            function keyUp(){
+                var keycode=event.keyCode;
+                if(keycode>=37&&keycode<=40){
+                    dx=0;
+                    dy=0;
+                }
+                
+            }
+
+        </script>
+    </head>
+
+    <body onload="loaded()" onkeydown="keyDown()" onkeyup="keyUp()"> <!--keydown : 방향키 인식 가능, 대소문자 불가-->
+        <canvas id="c1" width="400" height="500" style="border: 2px solid black;"></canvas>
+    </body>
+</html>

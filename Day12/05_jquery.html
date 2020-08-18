@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JQuery</title>
+        <meta charset="utf-8">
+
+        <!-- JQuery : JS의 라이브러리 jquery.com-->
+
+        <!-- 외부 라이브러리 적용 -->
+        <!-- 1. 다운로드 방식 : 폴더에 내장 -->
+        <!-- <script src="./jquery-3.5.1.min.js"> -->
+
+        </script>
+        
+        <!-- 2. **권장 - CDN(Content Delivery Network): 링크걸어서 사용하는 방법*** jQuery 사이트 가서 구글 링크로 가서..-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- jQuery 문법 -->
+        <!-- css의 선택자 기법을 활용한 라이브러리임 -->
+        <!-- jQuery().xxx() 모든 기능을 메소드로(xxx) 만들어 놓음-->
+        <!-- 심지어 앞의 jQuery를 $로 줄임 : $('선택자').xxx() -->
+        <script>
+            // <body>요소의 onload() 속성을 대체
+            jQuery(document).ready(function(){
+                // alert("dd");
+                jQuery('#btn').click(function(){
+                    // alert();
+                    // jQuery('#hh').hide();
+                    $('#hh').hide();
+                });
+
+                $('#btn2').click(function(){
+                    $('#hh').show();
+                });
+
+                $('#btn3').on('click', function(){
+                    $('#hh').toggle();
+                });
+
+                $('input').focus(function(){
+                    $(this).css('background-color', 'yellow');
+                })
+                $('input').blur(function(){
+                    $(this).css('background-color', '');
+                })
+               
+            });
+        </script>
+
+
+    </head>
+
+    <body>
+        <button id="btn">hide</button>
+        <button id="btn2">show</button>
+        <button id="btn3">toggle</button>
+        <hr>
+        <h4 id="hh">Hello</h4>
+        
+        <hr>
+        <!-- 입력필드의 이벤트 처리 -->
+        이름: <input type="text">
+
+        <hr>
+        <button id="b1">hide</button>
+        <button id="b2">show</button>
+        <button id="b3">toggle</button>
+        <button id="b4">slideDown</button>
+        <!-- <button id="b5">fadeIn</button>
+            <button id="b6">fadeOut</button> -->
+        <button id="b5">move</button>
+        <br>
+        <img id="img" src="./a_pig.png" alt="" width="150px">
+        <style>
+            img{
+                position: relative;
+            }
+        </style>
+
+        <script>
+            $('#b1').on('click', function(){
+                $('#img').hide("slow");
+            });
+            $('#b2').on('click', function(){
+                $('#img').show("fast");
+            });
+            $('#b3').on('click', function(){
+                $('#img').toggle(2000);
+            });
+            $('#b4').on('click', function(){
+                $('#img').slideDown('slow');
+            });
+            // $('#b5').on('click', function(){
+            //     $('#img').fadeIn('slow');
+            // });
+            // $('#b5').on('click', function(){
+            //     $('#img').fadeOut('fast');
+            // });
+            $('#b5').click(function(){
+                $('#img').animate({left:'200px', top:"50px", opacity:'0.7', width:'100px'}, 1000); //left 값을 주려면 요소가 static이 아니어야 한다
+                $('#img').animate({left:'0px', top:"0px", opacity:'1.0', width:'150px'}, 1000); 
+
+            })
+        </script>
+
+        <hr>
+        <!-- jQuery 사용 이유:  DOM의 요소를 제어하기 위하여 -->
+        <p id="p1">Hello <strong>World</strong> JS</p>
+        <button id="btn10">text 읽기</button>
+        <button id="btn20">html 읽기</button>
+        <script>
+            $('#btn10').click(function(){
+                var a=$('#p1').text();
+                alert(a);
+            });
+            $('#btn20').click(function(){
+                var s=$('#p1').html();
+                alert(s);
+            });
+        </script>
+
+        <p id="p2">aaa</p>
+        <button id="btn30">text 쓰기</button>
+        <button id="btn40">html 쓰기</button>
+        <script>
+            $('#btn30').click(function(){
+                $('#p2').text('<a href="">Google</a>');
+            });
+            $('#btn40').click(function(){
+                $('#p2').html('<a href="">Google</a>');
+            });
+
+        </script>
+
+        <hr>
+        <input type="text" id="in3" value="hello world">
+        <button id="b10">읽기</button>
+        <button id="b11">쓰기</button>
+
+        <script>
+            $('#b10').click(function(){
+                var s=$('#in3').val();
+                alert(s);
+            });
+            $('#b11').click(function(){
+                $('#in3').val("nice to meet you");
+            });
+        </script>
+        <hr>
+
+        <!-- 조금 복잡한 선택자 -->
+        <div>
+            <input type="checkbox" name="cbs[]" value="apple">apple<br>
+            <input type="checkbox" name="cbs[]" value="banana">banana<br>
+            <input type="checkbox" name="cbs[]" value="orange">orange<br>
+            <input type="checkbox" name="cbs[]" value="berry">berry<br>
+        </div>
+        <button class="bbb">클릭된 녀석들 찍어내기</button>
+        <h3 id="gg"></h3>
+        <script>
+            $('.bbb').click(function(){
+                var str="";
+                // div 자손 중 input 중 타입 속성이 checkbox인 녀석 중 체크된 녀석들의 배열..에 jQuery의 forEach문인 each를 돌림
+                $('div input[type=checkbox]:checked').each(function(){
+                    str+=$(this).val()+'<br>';
+                    $('#gg').html(str);
+                })
+            });
+        </script>
+
+
+
+    </body>
+</html>
