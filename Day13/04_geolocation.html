@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GEO Location</title>
+        <meta charset="utf-8">
+
+        <script>
+            // 내 위치 얻어오기
+            function clickBtn(){
+                // 내 위치를 관리하는 객체
+                window.navigator.geolocation.getCurrentPosition(function(position){ //성공했을때 실행되는 함수, 실패했을때 실행되는 함수
+                    var lat=position.coords.latitude;
+                    var lng=position.coords.longitude;
+
+                    document.getElementById('hh').innerHTML=lat+", "+lng;
+                }, 
+                function(error){
+                    var str;
+                    switch(error.code){
+                        case error.PERMISSION_DENIED:
+                            str="사용자 거부";
+                            break;
+
+                        case error.POSITION_UNAVAILABLE:
+                            str="지리정보 없음";
+                            break;
+
+                        case error.TIMEOUT:
+                            str='시간초과';
+                            break;
+
+                        case error.UNKNOWN_ERROR:
+                            str="알 수없는 에러";
+                            break;
+                    }
+                    document.getElementById('hh').innerHTML=str;
+                }); 
+
+            }
+
+            var id; //watchPosition을 리턴받을 변수
+            function aaa(){
+                id=navigator.geolocation.watchPosition(function(position){
+                    // 성공하면 실행되는 함수
+                    var lat=position.coords.latitude;
+                    var lng=position.coords.longitude;
+
+                    document.getElementById('hh').innerHTML=lat+", "+lng;
+                },
+                function (){
+                    //실패했을 때 실행되는 함수
+                });
+            }
+
+            function bbb(){
+                navigator.geolocation.clearWatch(id);
+                document.getElementById('hh').innerHTML="끝";
+            }
+        </script>
+    </head>
+
+    <body>
+        <button onclick="clickBtn()">내 위치 얻어오기</button>
+        
+        <h3 id="hh">location</h3>
+        <hr>
+
+        <button onclick="aaa()">위치 자동 업데이트 시작</button>
+        <button onclick="bbb()">위치 자동 업데이트 종료</button>
+    </body>
+</html>
