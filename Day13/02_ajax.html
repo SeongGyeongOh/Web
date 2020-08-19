@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AJAX</title>
+        <meta charset="utf-8">
+
+        <script>
+            function getTest(){
+                // 서버에 보낼 데이터 받아오기
+                var name=document.getElementById('in1').value;
+                var email=document.getElementById('in2').value;
+
+                // 서버 연결 url
+                var url='./getTest.php?name='+name+'&email='+email;
+
+                // 서버에 데이터를 요청(Request)하는 객체 생성
+                var req=new XMLHttpRequest();
+                // 요청을 받고나서 실행되는 함수(반드시 send(); 전에 등록해야 함)
+                req.open('GET', url, true); //연결 방식, 연결 url, 비동기 여부
+                req.onreadystatechange=function(){
+                    // 요청 결과를 받고, 실행 결과가 있을 때
+                    if(req.readyState==4&&req.status==200){
+                        var ta=document.getElementById('ta');
+                        ta.innerHTML=req.responseText;
+                    }
+                }
+                req.send();
+            }
+
+            function postTest(){
+                var name=document.getElementById('in1').value;
+                var email=document.getElementById('in2').value;
+
+                var req=new XMLHttpRequest();
+
+                req.onreadystatechange=function(){
+                    if(req.readyState==4&&req.status==200){
+                        var ta=document.getElementById('ta');
+                        ta.innerHTML=req.responseText;
+                    }
+                }
+
+                req.open('POST', './postTest.php', true);
+                // post로 데이터 보내기 위해서는 반드시 헤더 작업이 필요함
+                req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                req.send('name='+name+'&email='+email);
+            }
+        </script>
+    </head>
+
+    <body>
+        <fieldset name="aaa">
+            <input type="text" name="name" id="in1">
+            <input type="text" name="email" id="in2"><br>
+            <input type="submit" onclick="getTest()" value="get 테스트"><br>
+            <input type="submit" onclick="postTest()" value="post 테스트">
+
+            <br>
+            <hr>
+
+            <textarea id="ta" cols="50" rows="3">
+
+            </textarea>
+        </fieldset>
+
+    </body>
+</html>

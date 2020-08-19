@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ajax jQuery</title>
+        <meta charset="utf-8">
+
+        <!-- jQuery 라이브러리 적용 -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            // jQuery 라이브러리 AJAX 기술
+            $(document).ready(function(){
+                $('#b1').click(function(){
+                    var name=$('in1').val();
+                    var email="aaa@aaa.com";
+
+                    // $. : jQuery의 전역함수(안에 객체를 생성)
+                    $.ajax({
+                        // 총 4개의 값을 가지고 있음
+                        type: 'GET',
+                        url: './getTest.php?name='+name+'&email='+email,
+                        success: function(data){
+                            //성공시 동작하는 함수
+                            $('#hh').html(data);
+                        },
+                        error: function(error){
+                            //실패시 작동하는 함수
+                            $('#hh').html(error.responseText);
+                        }
+                    });
+                });
+
+                $('#b2').click(function(){
+                    var name=$('#in1').val();
+                    var email='bbb@bbb.com';
+
+                    var data="&name="+name+'&email='+email;
+
+                    $.ajax({
+                        type: 'POST',
+                        url: './postTest.php',
+                        data: data, //속성이름과 변수명이 같은 사례
+                        success: function(data){
+                            $('#hh').html(data);
+                        },
+
+                        error:function(){
+                        }
+                    });
+
+                });
+            });
+
+        
+        </script>
+
+        
+    </head>
+
+    <body>
+        <input type="text" id="in1">
+        <button id="b1">Get</button>
+        <button id="b2">POST</button>
+
+        <h4 id="hh"></h4>
+    </body>
+</html>
