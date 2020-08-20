@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Web Storage</title>
+        <meta charset="utf-8">
+
+    </head>
+
+    <body>
+        <h2 id="aa"></h2><hr>
+        <h2 id="bb"></h2>
+
+
+        <script>
+            // 웹 스토리지 : 웹문서(html)가 데이터를 사용자의 컴퓨터에 저장할 수 있도록 하는 기법(일종의 쿠키(쿠키는 4kb, 웹스토리지는 5mb - 용량이 훨씬 큼))
+            // 로그인 데이터 저장/방문 횟수 기록 등...
+
+
+            // 웹 스토리지의 2가지 저장소
+            // 1. localStorage  -같은 도메인은 같은 저장소 공유 : 브라우저가 닫혀도 정보 유지
+
+            if(!localStorage.cnt){ //로컬스토리지의 cnt 변수가 없으면 0으로 설정하라
+                localStorage.cnt=0;
+            }
+            // 기존의 cnt가 있으면 값을 1 증가해라
+            localStorage.cnt=parseInt(localStorage.cnt)+1;
+            document.getElementById('aa').innerHTML=localStorage.cnt+"번째 방문입니다";
+
+
+            // 2. sessionStorage -같은 도메인은 같은 저장소 공유 : 브라우저가 닫히면 정보 소실
+            if(!sessionStorage.cnt){
+                sessionStorage.cnt=0;
+            }
+            sessionStorage.cnt=parseInt(sessionStorage.cnt)+1;
+            document.getElementById('bb').innerHTML=sessionStorage.cnt+"번째 방문";
+        </script>
+
+        <hr>
+
+        <!-- 같은 도메인 안에서 정보의 공유 -->
+        <a href="./aaa.html">aaa.html로 이동</a>
+    </body>
+</html>

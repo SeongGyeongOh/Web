@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //ECMAScript6(2015년도에 발표한 ES6)        
+        //1. 변수 선언 키워드가 추가 : let, const
+
+        // 기존의 var 변수
+        var a=10;
+        document.write(a+'<br>');
+        // 기존의 var 변수는 같은 이름의 변수를 또 선언하면 덮어쓰기됨
+        var a=20;
+        document.write(a+'<br>');
+        // a 변수의 값만 새로 대입됨
+
+
+        // 새로운 let 변수
+        let b=100;
+        document.write(b+'<br>');
+        // 같은이름으로 변수를 선언하면?
+        // let b=200;
+        // document.write(b+'<br>');
+        // ----->화면에 아무것도 안나옴!!! 에러처리됨!
+
+        // 즉, let은 var과 다르게 같은 이름의 변수 사용을 방지할 수 있음
+
+        // 그래도 변수니까, 값 대입은 가능가능
+        b=200;
+        document.write(b+'<br>');
+
+        // 상수만들기
+        const c=1000;
+        document.write(c+'<br>');
+        // c=2000; //ERROR! 전체 화면이 안나오는게 아니라 이 줄 아래로 안나옴
+        // document.write(c+'<br>'); 
+
+        // const도 같은 이름의 변수를 만들 수 없음
+        // const c=300; //전체 에러
+        // document.write(c+'<br>'); 
+
+        // let, const 역시 자료형은 자유롭게 저장이 가능하다
+        let d="aaa";
+        // 언제든 값의 자료형을 바꾸는 것도 가능하다
+        d=10;
+        document.write(d+'<br>')
+        d=true;
+        document.write(d+'<br>'); 
+        d=new Date();
+        document.write(d+'<br>'); 
+
+        // let으로 참조 가능한건 const로도 다 참조 가능함
+        // 단지 값이 바뀌냐 안바뀌냐의 차이일 뿐!
+        const e="sam";
+        document.write(e+'<br>'); 
+        const f=new Date();
+        document.write(f+'<br>')
+
+        document.write('<hr>'); 
+
+        // let과 var의 더 큰 차이점 - 지역에 대한 인식범위(scope)
+        // var은 함수 단위를 지역으로 생각함
+        // let은 중괄호가 지역임
+        if(true){
+            var g=10; //이 녀석은 지역변수가 아님!! - var은 오직 함수의 범위만 지역으로 인식함
+            document.write(g+'<br>');  
+        }
+        document.write(g+'<br>');  
+        
+        if(true){
+            let h=100; // 이 녀석은 지역변수가 됨!
+            document.write(h+'<br>'); 
+        }
+        // document.write(h+'<br>');  //지역 바깥이라 출력 안됨
+
+        function aaa(){
+            var k=1000; //이건 함수니까 지역변수임
+            document.write(k+'<br>'); 
+        }
+        aaa();
+        // document.write(k+'<br>'); //인식 안됨
+
+        for(var i=0; i<3; i++){
+            document.write("aaa<br>");
+        }
+
+        document.write(i+'<br>'); //잘 찍힘! 이유는 for() 안의 var i는 지역변수가 아니기 때문
+
+        for(let i=0; i<3; i++){
+            document.write("aaa<br>");
+        }
+        // document.write(i +"<br>"); //i를 인식하지 못함
+
+
+    </script>
+
+</body>
+</html>
