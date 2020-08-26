@@ -15,7 +15,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+    
         <script>
             // ajax를 이용한 화면변환
             function changescreen(){   
@@ -28,35 +28,32 @@
                 req.open('GET', url, true);
                 req.onreadystatechange=function(){
                     if(req.readyState==4&&req.status==200){
-                        // alert(req.responseText);    
+                        alert(req.responseText);    
                         document.getElementById('<html이 놓여질 요소의 id>').innerHTML=req.responseText;                            
                     }
                 }
                 req.send();
             }
         </script>
-
-        <!-- <script>
-            // ajax를 이용한 화면변환
-            function menu(){   
+        <script>
+            function clickPremium(){   
                 // alert('test1');
-
-                var url='./menu.html';
-
+        
+                var url='./menu_premium.html';
+        
                 var req=new XMLHttpRequest();
-                // alert('aa');
-
-                // 
+        
+                req.open('GET', url, true);
                 req.onreadystatechange=function(){
                     if(req.readyState==4&&req.status==200){
-                        // alert(req.responseText);    
-                        document.getElementById('maincontent').innerHTML=req.responseText;                            
+                        document.getElementById('contentsdiv').innerHTML=req.responseText;                            
                     }
                 }
-                req.open('GET', url, true);
                 req.send();
             }
-        </script> -->
+        </script>
+
+
         <script>
             // 상단 메뉴 마우스 이벤트
             function showsecond(d){
@@ -95,7 +92,6 @@
                 leftMenuObj.removeAttribute("style");
             }
         </script>
-
     <style>
 
         @font-face {
@@ -103,37 +99,42 @@
             src: url('./img/GodoB.ttf');
         }
 
-        a{
-            margin: 0px;
-            padding: 0px;
-        }
-
         body{
             text-align: center;
             background-color: rgb(236, 230, 217);
-            position: relative;
+            position: absolute;
         }
-        body #maincontent{
+        /* body #maincontent{
             max-width: 1140px;
             min-width: 780px;
             margin-left: auto;
             margin-right: auto;
             
-        }
+        } */
         body *{
             margin: 0px;
             padding: 0px;
             font-family: 'MyFont',sans-serif;
         }
         #wrapper{
-            display: inline;
+            max-width: 1140px;
             min-width: 780px;
+            padding-top: 7em;
         }
-        li{
+
+        li, dd{
             cursor: pointer;
         }
 
- 
+        #contentsdiv{
+            display: flex;
+            /* overflow: inherit; */
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 1140px;
+            min-width: 0px;
+        }
+
         /* 히든메뉴-반응형 */
         .hiddenmenuwrap{
             display: none;
@@ -141,7 +142,7 @@
             z-index: 999;
             width: 100%;
             height: 50px;
-            background-color: white;
+            background-color: green;
         }
         .VirtualView {
             width: 100%;
@@ -262,7 +263,6 @@
         .header #first .mainmenu>li{
             margin-right: 2em;
             list-style: none;
-            cursor: pointer;
         }
         .header #secondwrap{
             display: none;
@@ -295,7 +295,6 @@
             margin-bottom: 1em;
             margin-right: 2em;
             flex-shrink: 1;
-            cursor: pointer;
         }
         
         .header #second .mainmenu .submenu :last-child{
@@ -330,163 +329,86 @@
             line-height: 50px;
         }
 
+        body{
+            text-align: center;
+            background-color: white;
+            position: relative;
+            /* max-width: 1140px;
+            min-width: 780px;
+            margin-left: auto;
+            margin-right: auto; */
+        }
+        body *{
+                font-family: 'MyFont',sans-serif;
+        }
 
-        /* 맨 위 움직이는 이미지 부분 */
-        .carousel .carousel-inner img{
-            z-index: 1;
+/* **************************************************** */
+        .menu{
+            position: relative;
+            padding-top: 7em;
+        }
+        /* 상단 고정된 검은 바 */
+        #fixedLine{
             position: relative;
             width: 100%;
-            margin-top: 7em;
+            background-color: black;
+            height: 50px;
+            padding-top: 18px;
+            text-align: center;
+            color: white;
+            font-size: 0.8em;
         }
-        .carousel #demo{
-            position: relative;
-            z-index: 0;
+        #fixedLine p{
+            text-align: left;
+            max-width: 1140px;
+            min-width: 780px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        #demo2{
+
+        /* 검은 바 아래 가로메뉴 */
+        #rowMenuBar{
+            margin-top: 2em;
+            max-width: 1140px;
+            min-width: 780px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 3em;
+        }
+        #rowMenuBarResponsive{
             display: none;
         }
-        /* 유튜브 영상 */
-        .indexVideo{
-            margin: 0px;
-            padding: 0px;
-        }
-        #youtube{
-            width: 100%;
-            height: 300px;
-        }
-        /* SNS 링크 이미지 */
-        .linktoSNS{
-            background-color: #683a2f;
+        #rowMenuBar dl{
             display: flex;
             flex-direction: row;
-            justify-content: space-evenly;
-            height: 150px;
-            margin-top: -8px;
-        }
-        .linktoSNS .wrapsns{
-            display: flex;
-            flex-direction: row;
-            align-items: center;    
-        }
-        .linktoSNS .wrapsns :nth-child(2){
-            margin-left: 0.5em;
-            text-align: left;
-        }
-        .linktoSNS .wrapsns :nth-child(2) :first-child{
-            color: white;
-        }
-        .linktoSNS .wrapsns :nth-child(2) :last-child{
-            background-color: white;
-            border-radius: 3px;
-            padding: 0.2em;
-        }
-        .linktoSNS div p{
-            display:inline-block
-        }
-        .linktoSNS #img1,#img2,#img3{
-            width: 80px;
-        }
-
-
-        /* 배달 이미지 링크 */
-        .linktoDel{
-            display: flex;
-            flex-direction: row;
-        }
-        .linktoDel #linktoapp{
-            background-color: #c7a186;
-        }
-        .linktoDel #linktodel{
-            background-color: #b08972;
-        }
-
-        .linktoDel img{
-            width: 100%;
-        }
-        
-        /* 매장찾기 */
-        .linktoMap{
-            background-color: white;
-            padding-top: 3em;
-            padding-bottom: 5em;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .linktoMap>h2, p{
-            margin-bottom: 0.5em;
-        }
-        .linktoMap>p{
-            font-size: 1.2em;
-            margin-bottom: 1em;
-        }
-        .linktoMap button{
-                width: 150px;
-                background-size: 150px;
-                height: 50px;
-                border: 0px;
-                background-image: url('./img/bg_redbtn.png');
-                background-color: transparent;
-                color: white;
-                margin-left: auto;
-                margin-right: auto;
-                margin-bottom: 2em;
-            }
-        .linktoMap .mapicon{
-            display: flex;
-            flex-direction: row;
-            /* justify-content: space-evenly; */
-            margin-top: 3em;
-            justify-content: center;
-        }
-        .linktoMap .mapicon1, .mapicon2{
-            display: flex;
-            flex-direction: row;
-        }
-        .mapicon1>div, .mapicon2>div{
-            margin-right: 2em;
-        }
-        .linktoMap .mapicon img{
-            width: 60px;
-        }
-        
-        #mapdeliver{
-            margin-left: 3em;
-        }
-        .mapicon .mapicon1, .mapicon2:last-child{
-            border: none;
-            padding: 0px;
-        }
-        #mappark{
-            margin-right: 3em;
-        }
-
-        .linktoMap strong{
-            color: rgb(235, 18, 18);
-        }
-
-        /* 고정 이미지 */
-        .img{
-            padding: 2em;
-            background-image: url('./img/bg_fire.png');
-            color: white;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
         }
-        .img .fixedLeft{
-            display: inline;
-            text-align: left;
-            margin: 0px;
+
+        #rowMenuBar dl>dt, dd{
+            list-style: none;
+            margin-right: 0.8em;
+        }
+        #rowMenuBar dl>dt{
+            font-size: 1.8em;
+        }
+        #rowMenuBar dl>dd:hover{
+            color: grey;
+            cursor: pointer;
+        }
+        #rowMenuBar dl>dd:checked{
+            color: red;
         }
 
-        .img #imgtitle{
-            margin-bottom: 0.3em;
+        /* 컨텐츠 - ajax */
+        .contentsdiv{
+            position: relative;
+            /* height: 500px; */
+            background-color: cornflowerblue;
         }
-        .img .fixedRight #imginimg{
-            width: 50px;
-        }
+
+        /* ********************************************** */
+
 
         /* 하단 메뉴 */
         .bottomlist{
@@ -548,8 +470,6 @@
             width: 25px;
             margin-right: 0.5em;
         }
-
-
         .footer .footerRight{
                 display: flex;
                 justify-content: space-between;
@@ -578,98 +498,51 @@
             .header {
                 display: none;
             }
-            /* 움직이는 이미지 */
-            .carousel {
+
+            /* 가로 메뉴 */
+            nav{
+                width: 100%;
+            }
+            .menu{
+                position: relative;
+                margin-top: -600px;
+            }
+            .menu #fixedLine{
+                text-align: left;
+            }
+
+            .menu #fixedLine p{
+                display: inline;
+                padding-left: 10px;
+            }
+            #rowMenuBar{
                 display: none;
             }
-            #demo2{
-                margin-top: -500px;
-                display: block;
-            }   
-            .carousel .carousel-inner img{
-            margin-top: 0em;
-        }
-            /* sns 링크 */
-            .linktoSNS .wrapsns{
-                flex-direction: column;
-                align-items: center;
-            }
-            .linktoSNS #img1,#img2,#img3{
-                width: 50px;
-                margin-top: 1.8em;
-            }
-            .linktoSNS strong{
-                font-weight: 0;
-                font-size: 0.7em;
-            }
-            .linktoSNS .wrapsns :nth-child(2){
-                margin-left: 0em;
-                text-align: center;
-            }
-            /* 배달 이미지 링크 */
-            .linktoDel{
-                flex-direction: column;
-                justify-content: center;
-            }
-            /* 지도 링크 */
-            .linktoMap{
-                text-align: center;
-            }
-            .linktoMap button{
-                width: 150px;
-                background-size: 150px;
-                height: 50px;
-                border: 0px;
-                background-image: url('./img/bg_redbtn.png');
-                background-color: transparent;
-                color: white;
-                margin-left: auto;
-                margin-right: auto;
-                margin-bottom: 2em;
-                
-            }
-            .linktoMap .mapicon{
-                flex-direction: column;
-                margin: 0px;
-                text-align: center;
-                justify-content: space-between;
-                align-items: center;
-            }
-            .linktoMap .mapicon p{
-                display: none;
-            }
-            .mapicon .mapicon1{
-                margin-bottom: 3em;
-            }
-            .mapicon div{
-                display: inline-block;
-            }
-            .mapicon1, .mapicon2{
-                display: block;
-            }
-            #mappark{
-                margin-right: 0px;
-            }
-            /* 고정 이미지 */
-            .img{
-                flex-direction: column;
-                justify-content: start;
-                align-items: flex-start;
-            }
-            .img h3,  h1{
-                font-size: 1em;
-            }
-            .img p{
-                font-size: 0.8em;
-                margin-bottom: 2em;
-            }
-            .img .fixedRight{
+            #rowMenuBarResponsive{
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
+                width: 100%;
+                margin-bottom: 2em;
             }
-            .img .fixedRight #imginimg{
-                width: 30px;
+            #rowMenuBarResponsive dl{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
+            #rowMenuBarResponsive dl>#menuitem1{
+                display: flex;
+                text-align: center;
+                font-size: 0.8em;
+            }
+            #rowMenuBarResponsive dl>#menuitem2{
+                display: flex;
+                font-size: 0.8em;
+            }
+
+            
+            /* 컨텐츠 - ajax */
+
+
             /* 하단 메뉴 */
             .bottommenu{
                 display: none;
@@ -697,8 +570,11 @@
         }
 
     </style>
+
 </head>
-<body onload="setresponsive()">
+
+
+<body>
 
     <div id="#wrapper"> 
         <!-- 헤더 : 로고와 메뉴 부분 -->
@@ -730,7 +606,7 @@
                             <li>메뉴소개</li>
                             <ul class="submenu">
                                 <li>스페셜&할인팩</li>
-                                <li><a href="./menu.html">프리미엄</a></li>
+                                <li onclick="clickPremium()">프리미엄</li>
                                 <li>와퍼</li>
                                 <li>주니어&버거</li>
                                 <li>올데이킹&치킨버거</li>
@@ -773,8 +649,8 @@
                     <ul class="mainmenu">
                         <li>메뉴소개</li>
                         <ul class="submenu">
-                            <li><a href="./menu.html">스페셜&할인팩</a></li>
-                            <li><a href="./menu.html">프리미엄</a></li>
+                            <li><a href="./menu_special.html">스페셜&할인팩</a></li>
+                            <li><a href="./menu_premium.html">프리미엄</a></li>
                             <li><a href="./WP_manu.html">와퍼</a> </li>
                             <li><a href="./JWP_manu.html">주니어&버거</a></li>
                             <li><a href="./menu_alldayking.html">올데이킹&치킨버거</a></li>
@@ -804,157 +680,76 @@
                 </div>
             </div>
         </div>
-        
-        <!-- 컨텐트 섹션 -->
-        <section class="maincontent" id="maincontent">
-            <!-- 맨 위에 움직이는 사진 -->
-            <div id="demo" class="carousel slide" data-ride="carousel">
-                <ul class="carousel-indicators">
-                    <li data-target="#demo" data-slide-to="0" class="active"></li>
-                    <li data-target="#demo" data-slide-to="1"></li>
-                    <li data-target="#demo" data-slide-to="2"></li>
-                  </ul>
 
-                  <div class="carousel-inner">
-                    <div class="carousel-item active" id="img01" >
-                      <img src="./img/movingimg/movingimg_24deliver.png" alt="Los Angeles">
-                    </div>
-                    <div class="carousel-item">
-                      <img id="img02" src="./img/movingimg/movingimg_king.png" alt="Chicago">
-                    </div>
-                    <div class="carousel-item">
-                      <img id="img03" src="./img/movingimg/movingimg_quatro.png" alt="New York">
-                    </div>
-                  </div>
-                <!-- <img id="headpic" src="./img/movingimg/movingimg_24deliver.png" alt="헤더 이미지"> -->
-                <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                  </a>
-                  <a class="carousel-control-next" href="#demo" data-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                  </a>
+        <!-- ***********************내부 섹션****************************** -->
+        <!-- 상단에 고정된 검은 바 -->
+        <nav class="menu">
+            <div id="fixedLine">
+                <p>HOME &gt; 메뉴 소개</p>
             </div>
-
-            <div id="demo2" class="carousel slide" data-ride="carousel">
-
-                <ul class="carousel-indicators">
-                    <li data-target="#demo" data-slide-to="0" class="active"></li>
-                    <li data-target="#demo" data-slide-to="1"></li>
-                    <li data-target="#demo" data-slide-to="2"></li>
-                  </ul>
-
-                  <div class="carousel-inner">
-                    <div class="carousel-item active" id="img01" >
-                      <img src="./img/movingimg/movingimg_mobile01.png" alt="Los Angeles">
-                    </div>
-                    <div class="carousel-item">
-                      <img id="img02" src="./img/movingimg/movingimg_mobile02.png" alt="Chicago">
-                    </div>
-                    <div class="carousel-item">
-                      <img id="img03" src="./img/movingimg/movingimg_mobile03.png" alt="New York">
-                    </div>
-                  </div>
-                <!-- <img id="headpic" src="./img/movingimg/movingimg_24deliver.png" alt="헤더 이미지"> -->
-                <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                  </a>
-                  <a class="carousel-control-next" href="#demo" data-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                  </a>
+            <!-- 가로 메뉴 -->
+            <div id="rowMenuBar">
+                <dl>
+                    <dt>메뉴소개</dt>
+                    <dd>스페셜&할인팩</dd>
+                    <dd id="premium" onclick="loadDB(this)">프리미엄</dd>
+                    <dd>와퍼</dd>
+                    <dd>주니어&와퍼</dd>
+                    <dd>올데이킹&치킨버거</dd>
+                    <dd>사이드</dd>
+                    <dd>음료&디저트</dd>
+                    <dd>아침메뉴</dd>
+                </dl>
             </div>
+        </nav>
 
-            <!-- 그 아래 유튜브 동영상 -->
-            <div class="indexVideo" >
-                <iframe id="youtube" width="100%" height="300px" src="https://www.youtube.com/embed/pCyePydLajI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-
-            <!-- sns 링크 -->
-            <div class="linktoSNS" > 
-                <div class="wrapsns"> 
-                    <a href="https://www.youtube.com/channel/UCEKRI0fipK4LEgV98nI2CQA"><img id="img1" src="./img/youtube.png" alt=""></a>
-                    <div id="wrapyou">
-                        <strong>YOUTUBE</strong><br>
-                        <strong>구독자 2.3만</strong>
-                    </div>
+        <div id="rowMenuBarResponsive">
+            <dl>
+                <dt>메뉴소개</dt>
+                <div id="menuitem1">
+                    <dd>스페셜&할인팩</dd>
+                    <dd>프리미엄</dd>
+                    <dd>와퍼</dd>
+                    <dd>주니어&와퍼</dd>
                 </div>
-                <div class="wrapsns">
-                    <a href="https://ko-kr.facebook.com/burgerkingkorea/"><img id="img2" src="./img/facebook.png" alt=""></a>
-                    <div id="wrapface">
-                        <strong>FACEBOOK</strong><br>
-                        <strong>좋아요 51.8만</strong>
-                    </div>
+                <div id="menuitem2">
+                    <dd>올데이킹&치킨버거</dd>
+                    <dd>사이드</dd>
+                    <dd>음료&디저트</dd>
+                    <dd>아침메뉴</dd>
                 </div>
-                <div class="wrapsns">
-                    <a href="https://www.instagram.com/accounts/login/?next=/burgerkingkorea/%3Fhl%3Dko"><img id="img3" src="./img/instagram.png" alt=""></a>
-                    <div id="wrapins">
-                        <strong>INSTAGRAM</strong><br>
-                        <strong>팔로워 423.0k</strong>
-                    </div>
-                </div>
-            </div>
+            </dl>
+        </div>
+    </nav>
 
-            <!-- 딜리버리 링크 -->
-            <div class="linktoDel" >
-                <a href="" id="linktoapp" ><img src="./img/app_desktop.png" alt=""></a>
-                <a href="" id="linktodel"><img src="./img/delivery_desk.png"></a>
-            </div>
+        <!-- 컨텐츠 -->
+        <div id="contentsdiv">
+            <script>
+                function loadDB(name){
+                    // alert(name.id);
+                    let menu=name.id;
+                    // alert(menu);
+                    var url='./getPremium.php?menu='+menu;
+                    var req=new XMLHttpRequest();
 
-            <!-- 지도 링크 -->
-            <div class="linktoMap">
-                <h2>매장찾기</h2>
-                <p>고객님 주변에 있는 버거킹을 찾아보세요!</p>
-                <!-- <a href=""><img src="./img/bg_redbtn.png" alt="" width="120px"></a><br><br> -->
-                <a href="./map_popup.html"><button>매장 찾기</button></a>
-                <div class="mapicon">
-                    <div class="mapicon1">
-                        <div id="mapdeliver">
-                            <img src="./img/icons8-motorcycle-100.png" alt="">
-                            <p>집에서 편안하게<br>받을 수 있는</p><br>
-                            <strong>딜리버리</strong>
-                        </div>
-                        <div>
-                            <img src="./img/icons8-online-store-100.png" alt="">
-                            <p>미리 주문하고<br>픽업 가능한</p><br>
-                            <strong>킹오더</strong>
-                        </div>
-                        <div  id="drivethr">
-                            <img src="./img/icons8-car-100.png" alt="">
-                            <p>차안에서 빠르게<br>이용할 수 있는</p><br>
-                            <strong>드라이브 스루</strong>
-                        </div>
-                    </div>
-                    <div class="mapicon2">
-                        <div>
-                            <img src="./img/icons8-last-24-hours-100.png" alt="">
-                            <p>24시간 언제든<br>함께할 수 있는</p><br>
-                            <strong>24시간</strong>
-                        </div>
-                        <div>
-                            <img src="./img/icons8-sun-100.png" alt="" style="border-right: 0px solid black;">
-                            <p>든든한<br>아침을 도와줄</p><br>
-                            <strong>아침메뉴</strong>
-                        </div>
-                        <div id="mappark">
-                            <img src="./img/icons8-parking-100.png" alt="" style="border-right: 0px solid black;">
-                            <p>내 차와 함께<br>올 수 있는</p><br>
-                            <strong>주차공간</strong>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    req.onreadystatechange=function(){
+                        if(req.readyState==4&&req.status==200){
+                            var jsonArray=JSON.parse(req.responseText);
 
-            <!-- 고정 이미지 -->
-            <div class="img">
-                <div class="fixedLeft">
-                    <h3 id="imgtitle">집에서 만나는 버거킹</h3>
-                    <p id="imgtext">딜리버리 전화주문 안내 10:00-22:00 / 연중무휴 [매장별로 상이할 수 있습니다.]</p>
-                </div>
-                <div class="fixedRight">
-                    <img id="imginimg" src="./img/phone.png" alt="">
-                    <h1>1599-0505</h1>
-                </div>
-            </div>
-        </section>
+                            for (let i=0; i<jsonArray.length;i++){
+                                var jsonStr=jsonArray[i];
+                                document.getElementById('contentsdiv').innerHTML+=jsonStr.itemimg+'<br>';     
+                                document.getElementById('contentsdiv').innerHTML+=jsonStr.itemname+'<br>';  
+                            }                         
+                                // var jsonObj=JSON.parse(jsonStr);
+                        }
+                    }
+                    req.open('GET', url, true);
+                    req.send();
+                }
+            </script>
+        </div>
+        <!-- ************************************************************************* -->
 
         <!-- 맨 아래 메뉴 섹션 -->
         <section class="bottommenu">
@@ -962,7 +757,7 @@
                 <ul>
                     <li>메뉴</li>
                     <li><a href="">스페셜&할인팩</a></li>
-                    <li><a onclick="menu()">프리미엄</a></li>
+                    <li><a href="">프리미엄</a></li>
                     <li><a href="">와퍼</a></li>
                     <li><a href="">주니어&버거</a></li>
                     <li><a href="">올데이킹&치킨버거</a></li>
@@ -1015,9 +810,6 @@
             </div>
         </footer>
     </div>
-
 </body>
 
 </html>
-
-
